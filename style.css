@@ -1,3 +1,7 @@
+html{
+    scroll-behavior:smooth;
+}
+
 /* ---------- BRAND ---------- */
 
 .brand{
@@ -241,4 +245,7 @@
     animation:fadeUp .8s ease forwards;
     animation-delay:.6s;
 
+}
+body{
+    font-family:"Cairo",sans-serif;
 }
