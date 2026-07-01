@@ -1,79 +1,1068 @@
-<!-- Announcement -->
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>FREEZE – الصيف فالمغرب... FREEZE جاب الحل</title>
 
-<header class="announcement-bar">
-    🔥 الصيف سخون... <strong>FREEZE عندها الحل.</strong>
-</header>
+    <!-- Google Fonts (Arabic + Latin) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet" />
 
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<!-- Logo -->
+        body {
+            font-family: 'Cairo', 'Montserrat', sans-serif;
+            background: #FFFFFF;
+            color: #1A2A3A;
+            direction: rtl;
+            line-height: 1.6;
+        }
 
-<section class="brand">
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
 
-    <div class="divider"></div>
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
-    <img
-        src="assets/logo.webp"
-        alt="FREEZE"
-        class="brand-logo">
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
 
-    <div class="divider"></div>
+        /* ===== HEADER ===== */
+        .header {
+            background: #1A2A3A;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
 
-</section>
+        .header .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 22px;
+            color: #FFFFFF;
+            letter-spacing: 4px;
+        }
 
+        .header .logo span {
+            color: #4FC3F7;
+        }
 
-<!-- Hero -->
+        .header .cta-btn {
+            background: #4FC3F7;
+            color: #1A2A3A;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+        }
 
-<section class="hero">
+        .header .cta-btn:hover {
+            background: #81C784;
+        }
 
-    <img
-        src="assets/producthero.webp"
-        alt="FREEZE Air One"
-        class="hero-image">
+        /* ===== HERO ===== */
+        .hero {
+            background: #F5F7FA;
+            padding: 30px 0 20px 0;
+            text-align: center;
+        }
 
+        .hero-image {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 16px auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
 
-    <a href="#order" class="cta-btn">
+        .hero h1 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #1A2A3A;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
 
-        خليك مبرد
+        .hero h1 .highlight {
+            color: #4FC3F7;
+        }
 
-    </a>
+        .hero .subhead {
+            font-size: 18px;
+            color: #4A5A6A;
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
 
-</section>
+        .hero .price-badge {
+            display: inline-block;
+            background: #1A2A3A;
+            color: #FFFFFF;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
 
+        .hero .price-badge span {
+            color: #4FC3F7;
+        }
 
-<!-- Trust -->
+        .hero .cta-main {
+            display: inline-block;
+            background: #4FC3F7;
+            color: #1A2A3A;
+            padding: 14px 48px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 20px;
+            transition: background 0.3s, transform 0.2s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            margin-top: 8px;
+            box-shadow: 0 4px 12px rgba(79, 195, 247, 0.4);
+        }
 
-<section class="trust">
+        .hero .cta-main:hover {
+            background: #81C784;
+            transform: scale(1.02);
+        }
 
-    <div class="trust-card">
+        /* ===== SECTION ===== */
+        .section {
+            padding: 40px 0;
+            border-bottom: 1px solid #E8ECF0;
+        }
 
-        <div class="icon">
-            🚚
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 800;
+            color: #1A2A3A;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .section-title .highlight {
+            color: #4FC3F7;
+        }
+
+        .section-sub {
+            text-align: center;
+            font-size: 16px;
+            color: #4A5A6A;
+            margin-bottom: 24px;
+        }
+
+        /* ===== PROBLEM / PAIN POINT ===== */
+        .pain-block {
+            background: #FFF3E0;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .pain-block .emoji-big {
+            font-size: 48px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .pain-block p {
+            font-size: 18px;
+            font-weight: 700;
+            color: #E65100;
+        }
+
+        /* ===== SOLUTION ===== */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .solution-item {
+            background: #F5F7FA;
+            border-radius: 12px;
+            padding: 16px 8px;
+            text-align: center;
+        }
+
+        .solution-item .icon {
+            font-size: 32px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .solution-item p {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1A2A3A;
+        }
+
+        /* ===== VIDEO ===== */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #1A2A3A;
+            margin: 16px 0;
+        }
+
+        .video-wrapper video,
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== FEATURES ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .feature-item {
+            background: #F5F7FA;
+            border-radius: 12px;
+            padding: 16px 12px;
+            text-align: center;
+            border-right: 4px solid #4FC3F7;
+        }
+
+        .feature-item .icon {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .feature-item p {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1A2A3A;
+        }
+
+        .feature-item small {
+            font-size: 12px;
+            color: #4A5A6A;
+            font-weight: 400;
+        }
+
+        /* ===== PRICING ===== */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .pricing-card {
+            background: #FFFFFF;
+            border: 2px solid #E8ECF0;
+            border-radius: 12px;
+            padding: 20px 12px;
+            text-align: center;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .pricing-card:hover {
+            border-color: #4FC3F7;
+            box-shadow: 0 4px 16px rgba(79, 195, 247, 0.15);
+        }
+
+        .pricing-card.best {
+            border-color: #4FC3F7;
+            background: #F0FAFF;
+        }
+
+        .pricing-card .qty {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1A2A3A;
+        }
+
+        .pricing-card .price {
+            font-size: 24px;
+            font-weight: 800;
+            color: #4FC3F7;
+            margin: 4px 0;
+        }
+
+        .pricing-card .old-price {
+            font-size: 14px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .pricing-card .save {
+            font-size: 12px;
+            color: #81C784;
+            font-weight: 700;
+        }
+
+        .pricing-card .per-unit {
+            font-size: 12px;
+            color: #4A5A6A;
+        }
+
+        .pricing-card .badge {
+            display: inline-block;
+            background: #81C784;
+            color: #FFFFFF;
+            font-size: 12px;
+            padding: 2px 12px;
+            border-radius: 20px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .pricing-card .btn-select {
+            display: inline-block;
+            background: #1A2A3A;
+            color: #FFFFFF;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 8px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            width: 100%;
+        }
+
+        .pricing-card .btn-select:hover {
+            background: #4FC3F7;
+            color: #1A2A3A;
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonial {
+            background: #F5F7FA;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 12px;
+            border-right: 4px solid #4FC3F7;
+        }
+
+        .testimonial .text {
+            font-size: 16px;
+            font-weight: 400;
+            color: #1A2A3A;
+        }
+
+        .testimonial .name {
+            font-weight: 700;
+            color: #4FC3F7;
+            margin-top: 8px;
+        }
+
+        .testimonial .city {
+            font-size: 14px;
+            color: #4A5A6A;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-item {
+            border-bottom: 1px solid #E8ECF0;
+            padding: 16px 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item .q {
+            font-weight: 700;
+            color: #1A2A3A;
+            font-size: 16px;
+        }
+
+        .faq-item .q .icon {
+            margin-left: 8px;
+        }
+
+        .faq-item .a {
+            font-size: 15px;
+            color: #4A5A6A;
+            margin-top: 4px;
+            padding-right: 28px;
+        }
+
+        /* ===== FORM SECTION ===== */
+        .form-wrapper {
+            background: #F5F7FA;
+            border-radius: 12px;
+            padding: 24px 16px;
+            margin-top: 16px;
+        }
+
+        .form-wrapper .form-label {
+            font-weight: 700;
+            font-size: 14px;
+            color: #1A2A3A;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .form-wrapper .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E8ECF0;
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 16px;
+            margin-bottom: 16px;
+            transition: border-color 0.3s;
+            background: #FFFFFF;
+        }
+
+        .form-wrapper .form-input:focus {
+            border-color: #4FC3F7;
+            outline: none;
+        }
+
+        .form-wrapper .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E8ECF0;
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 16px;
+            margin-bottom: 16px;
+            background: #FFFFFF;
+        }
+
+        .form-wrapper .form-btn {
+            width: 100%;
+            background: #4FC3F7;
+            color: #1A2A3A;
+            padding: 14px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 20px;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 12px rgba(79, 195, 247, 0.3);
+        }
+
+        .form-wrapper .form-btn:hover {
+            background: #81C784;
+            transform: scale(1.01);
+        }
+
+        .form-wrapper .form-btn .sub {
+            font-size: 14px;
+            font-weight: 400;
+            display: block;
+        }
+
+        /* ===== STICKY CTA (Mobile) ===== */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #1A2A3A;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 999;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.15);
+            display: none;
+            /* Hidden by default, shown on scroll via JS */;
+        }
+
+        .sticky-cta .sticky-text {
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .sticky-cta .sticky-text span {
+            color: #4FC3F7;
+        }
+
+        .sticky-cta .sticky-btn {
+            background: #4FC3F7;
+            color: #1A2A3A;
+            padding: 10px 28px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            transition: background 0.3s;
+        }
+
+        .sticky-cta .sticky-btn:hover {
+            background: #81C784;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #1A2A3A;
+            color: #FFFFFF;
+            padding: 24px 16px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            letter-spacing: 3px;
+        }
+
+        .footer .logo span {
+            color: #4FC3F7;
+        }
+
+        .footer .tagline {
+            font-size: 16px;
+            color: #B0C4DE;
+            margin: 4px 0 12px 0;
+        }
+
+        .footer .whatsapp {
+            display: inline-block;
+            background: #25D366;
+            color: #FFFFFF;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 8px;
+            transition: background 0.3s;
+        }
+
+        .footer .whatsapp:hover {
+            background: #1DA851;
+        }
+
+        .footer .copy {
+            font-size: 13px;
+            color: #6A7A8A;
+            margin-top: 16px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 22px;
+            }
+
+            .hero .subhead {
+                font-size: 16px;
+            }
+
+            .hero .price-badge {
+                font-size: 18px;
+                padding: 6px 18px;
+            }
+
+            .solution-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 8px;
+            }
+
+            .solution-item {
+                padding: 12px 4px;
+            }
+
+            .solution-item .icon {
+                font-size: 24px;
+            }
+
+            .solution-item p {
+                font-size: 12px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .pricing-card {
+                padding: 16px;
+            }
+
+            .sticky-cta {
+                display: flex;
+                /* Show on mobile always */;
+            }
+
+            .header .cta-btn {
+                font-size: 12px;
+                padding: 6px 14px;
+            }
+
+            .header .logo {
+                font-size: 18px;
+                letter-spacing: 2px;
+            }
+
+            .form-wrapper {
+                padding: 16px 12px;
+            }
+        }
+
+        @media (min-width: 601px) {
+            /* Desktop: hide sticky CTA, use header + hero CTA */
+            .sticky-cta {
+                display: none !important;
+            }
+        }
+
+        /* ===== SCROLL ANIMATION ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== UTILITY ===== */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-8 {
+            margin-top: 8px;
+        }
+
+        .mt-16 {
+            margin-top: 16px;
+        }
+
+        .mb-8 {
+            margin-bottom: 8px;
+        }
+
+        .mb-16 {
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =============================== -->
+    <!-- HEADER (Sticky) -->
+    <!-- =============================== -->
+    <header class="header" id="header">
+        <div class="logo">FREE<span>ZE</span></div>
+        <button class="cta-btn" onclick="scrollToForm()">اطلب الآن</button>
+    </header>
+
+    <!-- =============================== -->
+    <!-- HERO SECTION -->
+    <!-- =============================== -->
+    <section class="hero" id="hero">
+        <div class="container">
+
+            <!-- ===== HERO IMAGE ===== -->
+            <!-- REPLACE src WITH YOUR ACTUAL IMAGE URL -->
+            <img class="hero-image" src="https://via.placeholder.com/600x400/4FC3F7/FFFFFF?text=FREEZE+Product+Photo" alt="FREEZE Cooling Fan" />
+
+            <!-- ===== HERO TEXT ===== -->
+            <h1>
+                الصيف فالمغرب... <br />
+                <span class="highlight">FREEZE</span> جاب الحل
+            </h1>
+            <p class="subhead">مروحة تبريد + مرطب + ضوء ليلي — كولشي فجهاز واحد</p>
+
+            <!-- ===== PRICE BADGE ===== -->
+            <div class="price-badge">
+                من <span>219</span> درهم فقط
+            </div>
+
+            <!-- ===== CTA ===== -->
+            <button class="cta-main" onclick="scrollToForm()">
+                اطلب الآن 🧊
+            </button>
+            <p style="font-size:14px; color:#4A5A6A; margin-top:8px;">
+                التوصيل فجميع المغرب — الدفع عند الاستلام
+            </p>
+
         </div>
+    </section>
 
-        <h3>توصيل سريع</h3>
+    <!-- =============================== -->
+    <!-- PAIN POINT (PROBLEM) -->
+    <!-- =============================== -->
+    <section class="section" id="problem">
+        <div class="container">
+            <div class="pain-block">
+                <span class="emoji-big">🔥</span>
+                <p>الحر كيعذبك؟ الفواكة كاتفسد؟ النوم كيصعب؟</p>
+                <p style="font-weight:400; font-size:16px; color:#1A2A3A; margin-top:4px;">
+                    الصيف فالمغرب معروف بالحر... لكن هاد السنة غادي تكون عندك الحل.
+                </p>
+            </div>
+        </div>
+    </section>
 
+    <!-- =============================== -->
+    <!-- SOLUTION (3 Benefits) -->
+    <!-- =============================== -->
+    <section class="section" id="solution">
+        <div class="container">
+            <h2 class="section-title">شنو كايجيب <span class="highlight">FREEZE</span>؟</h2>
+            <div class="solution-grid">
+                <div class="solution-item">
+                    <span class="icon">❄️</span>
+                    <p>تبريد فوري</p>
+                </div>
+                <div class="solution-item">
+                    <span class="icon">💨</span>
+                    <p>رشة ماء منعشة</p>
+                </div>
+                <div class="solution-item">
+                    <span class="icon">🌈</span>
+                    <p>ضوء ليلي 7 ألوان</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- VIDEO DEMO -->
+    <!-- =============================== -->
+    <section class="section" id="video">
+        <div class="container">
+            <h2 class="section-title">شوف <span class="highlight">FREEZE</span> فالدقيقة</h2>
+            <p class="section-sub">5 ثواني و كاتحس بالبرودة</p>
+
+            <div class="video-wrapper">
+                <!-- REPLACE src WITH YOUR ACTUAL VIDEO URL (MP4 or YouTube embed) -->
+                <video controls poster="https://via.placeholder.com/800x450/1A2A3A/4FC3F7?text=FREEZE+Demo+Video">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+                    متصفحك لا يدعم الفيديو.
+                </video>
+                <!-- OR use YouTube embed:
+                <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- FEATURES (5 Features) -->
+    <!-- =============================== -->
+    <section class="section" id="features">
+        <div class="container">
+            <h2 class="section-title">ماشي عادي — <span class="highlight">FREEZE</span> مختلف</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="icon">🌀</span>
+                    <p>3 سرعات للريح</p>
+                    <small>ريح خفيفة، متوسطة، أو قوية</small>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">💧</span>
+                    <p>3 طرق للرش</p>
+                    <small>رش مستمر، متقطع، أو ضباب</small>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🔋</span>
+                    <p>USB للتشغيل</p>
+                    <small>شحن من اللاب توب أو باور بانك</small>
+                </div>
+                <div class="feature-item">
+                    <span class="icon">🧊</span>
+                    <p>خزان 600ml</p>
+                    <small>تبريد لساعات طويلة</small>
+                </div>
+                <div class="feature-item" style="grid-column: span 2;">
+                    <span class="icon">📦</span>
+                    <p>خفيف و محمول</p>
+                    <small>خدوه معاك للخدمة، السيارة، أو السفر</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- PRICING -->
+    <!-- =============================== -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <h2 class="section-title">اختار العرض لي <span class="highlight">يناسبك</span></h2>
+            <p class="section-sub">كلما زاد العدد، كلما زادت الخصومات</p>
+
+            <div class="pricing-grid">
+
+                <!-- 1 Unit -->
+                <div class="pricing-card">
+                    <div class="qty">1</div>
+                    <div class="price">219 MAD</div>
+                    <div class="old-price">290 MAD</div>
+                    <div class="save">وفرت 71 درهم</div>
+                    <div class="per-unit">219 درهم للوحدة</div>
+                    <button class="btn-select" onclick="selectBundle(1, 219)">اختر 1</button>
+                </div>
+
+                <!-- 2 Units (Best Value) -->
+                <div class="pricing-card best">
+                    <div class="badge">الأفضل</div>
+                    <div class="qty">2</div>
+                    <div class="price">399 MAD</div>
+                    <div class="old-price">438 MAD</div>
+                    <div class="save">وفرت 39 درهم</div>
+                    <div class="per-unit">199.5 درهم للوحدة</div>
+                    <button class="btn-select" onclick="selectBundle(2, 399)">اختر 2</button>
+                </div>
+
+                <!-- 3 Units -->
+                <div class="pricing-card">
+                    <div class="qty">3</div>
+                    <div class="price">579 MAD</div>
+                    <div class="old-price">657 MAD</div>
+                    <div class="save">وفرت 78 درهم</div>
+                    <div class="per-unit">193 درهم للوحدة</div>
+                    <button class="btn-select" onclick="selectBundle(3, 579)">اختر 3</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- TESTIMONIALS -->
+    <!-- =============================== -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">شنو كايقولو <span class="highlight">العملاء</span>؟</h2>
+
+            <div class="testimonial">
+                <p class="text">"ما كنتش مصدق كيفاش البرودة دازت فساعة. FREEZE غير شكل."</p>
+                <p class="name">— ياسين</p>
+                <p class="city">الدار البيضاء</p>
+            </div>
+
+            <div class="testimonial">
+                <p class="text">"خدمت معايا فالمكتب. الجو كان خانق، ولكن FREEZE خلاتني نركز فالشغل."</p>
+                <p class="name">— سارة</p>
+                <p class="city">الرباط</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- FAQ -->
+    <!-- =============================== -->
+    <section class="section" id="faq">
+        <div class="container">
+            <h2 class="section-title">أسئلة <span class="highlight">متكررة</span></h2>
+
+            <div class="faq-item">
+                <div class="q"><span class="icon">📦</span> كيفاش غادي يوصلني الطلب؟</div>
+                <div class="a">التوصيل فجميع مدن المغرب عبر شركات الشحن المعروفة. المدة 2-5 أيام عمل حسب المدينة.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q"><span class="icon">💰</span> كيفاش غادي ندفع؟</div>
+                <div class="a">الدفع عند الاستلام (COD) — كاتدفع فقط كايوصل لك الطلب. آمن ومضمون.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q"><span class="icon">🔄</span> واش يمكنني نرجع المنتج؟</div>
+                <div class="a">نعم. عندك 7 أيام من تاريخ الاستلام لتجربة المنتج. إذا ما عجبكش، نرجعو لك فلوسك.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="q"><span class="icon">⚡</span> كيفاش نستعمل FREEZE؟</div>
+                <div class="a">تملأ خزان الماء، توصلو بالUSB، تختار السرعة والرش، و... تستمع بالبرودة. سهل وبسيط.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- FORM (ORDER) -->
+    <!-- =============================== -->
+    <section class="section" id="order" style="border-bottom: none;">
+        <div class="container">
+            <h2 class="section-title">اطلب <span class="highlight">FREEZE</span> الآن</h2>
+            <p class="section-sub">املأ المعلومات وسنتواصل معك لتأكيد الطلب</p>
+
+            <div class="form-wrapper">
+
+                <!-- ============================================================ -->
+                <!-- GOOGLE FORM (LINK) — opens in new tab                           -->
+                <!-- REPLACE href WITH YOUR ACTUAL GOOGLE FORM URL                   -->
+                <!-- ============================================================ -->
+                <a href="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform" target="_blank" rel="noopener noreferrer">
+                    <button class="form-btn" style="width:100%;">
+                        املأ الفورم الآن 📝
+                        <span class="sub">سيتم فتح نموذج الطلب في تبويب جديد</span>
+                    </button>
+                </a>
+
+                <!-- ============================================================ -->
+                <!-- OR — EMBEDDED GOOGLE FORM (less reliable on GitHub)           -->
+                <!-- Uncomment below and comment the link above if you prefer embed -->
+                <!-- ============================================================ -->
+                <!--
+                <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" style="border-radius:8px;">
+                    جاري تحميل النموذج...
+                </iframe>
+                -->
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- STICKY CTA (Mobile) -->
+    <!-- =============================== -->
+    <div class="sticky-cta" id="stickyCta">
+        <div class="sticky-text">
+            FREEZE <span>🧊</span><br />
+            <small style="font-weight:400; font-size:12px;">من 219 درهم</small>
+        </div>
+        <button class="sticky-btn" onclick="scrollToForm()">اطلب الآن</button>
     </div>
 
+    <!-- =============================== -->
+    <!-- FOOTER -->
+    <!-- =============================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo">FREE<span>ZE</span></div>
+            <p class="tagline">ماشي عادي — Everyday, elevated.</p>
 
-    <div class="trust-card">
+            <a href="https://wa.me/212600000000?text=مرحبا%20أريد%20طلب%20FREEZE" target="_blank" rel="noopener noreferrer" class="whatsapp">
+                💬 تواصل معنا على واتساب
+            </a>
 
-        <div class="icon">
-            💵
+            <p style="margin-top:12px; font-size:14px; color:#6A7A8A;">
+                التوصيل فجميع المغرب — الدفع عند الاستلام
+            </p>
+
+            <p class="copy">
+                &copy; 2026 FREEZE. جميع الحقوق محفوظة.
+            </p>
         </div>
+    </footer>
 
-        <h3>الدفع عند الاستلام</h3>
+    <!-- =============================== -->
+    <!-- JAVASCRIPT -->
+    <!-- =============================== -->
+    <script>
+        // ===== SCROLL TO FORM =====
+        function scrollToForm() {
+            const formSection = document.getElementById('order');
+            if (formSection) {
+                formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
 
-    </div>
+        // ===== SELECT BUNDLE (sets the bundle in localStorage for later) =====
+        function selectBundle(qty, price) {
+            localStorage.setItem('freeze_bundle_qty', qty);
+            localStorage.setItem('freeze_bundle_price', price);
+            // Scroll to form
+            scrollToForm();
+            // Optional: show a small alert or highlight the form
+        }
 
+        // ===== SHOW STICKY CTA ON SCROLL (Mobile only) =====
+        let stickyShown = false;
 
-    <div class="trust-card">
+        window.addEventListener('scroll', function() {
+            const sticky = document.getElementById('stickyCta');
+            if (!sticky) return;
 
-        <div class="icon">
-            🛡️
-        </div>
+            // Only show on mobile (max-width 600px)
+            if (window.innerWidth > 600) {
+                sticky.style.display = 'none';
+                return;
+            }
 
-        <h3>ضمان الجودة</h3>
+            const heroHeight = document.getElementById('hero').offsetHeight;
+            const scrollY = window.scrollY;
 
-    </div>
+            if (scrollY > heroHeight * 0.6 && !stickyShown) {
+                sticky.style.display = 'flex';
+                stickyShown = true;
+            } else if (scrollY <= heroHeight * 0.6 && stickyShown) {
+                sticky.style.display = 'none';
+                stickyShown = false;
+            }
+        });
 
-</section>
+        // ===== FADE-IN ANIMATION ON SCROLL =====
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // ===== Check if bundle was pre-selected from pricing =====
+        window.addEventListener('load', function() {
+            const qty = localStorage.getItem('freeze_bundle_qty');
+            const price = localStorage.getItem('freeze_bundle_price');
+            if (qty && price) {
+                console.log(`🔹 Bundle pre-selected: ${qty} unit(s) at ${price} MAD`);
+                // You can optionally pre-fill a hidden field or show a notification
+            }
+        });
+
+        // ===== WHATSAPP AUTO-MESSAGE (Alternative if Google Form + WhatsApp) =====
