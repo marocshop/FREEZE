@@ -1,251 +1,305 @@
-html{
-    scroll-behavior:smooth;
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
 }
 
-/* ---------- BRAND ---------- */
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+font-family:"Cairo",sans-serif;
+
+background:white;
+
+color:#111827;
+
+overflow-x:hidden;
+
+}
+
+
+
+/* Announcement */
+
+.announcement-bar{
+
+background:#111827;
+
+color:white;
+
+padding:14px;
+
+text-align:center;
+
+font-size:17px;
+
+font-weight:700;
+
+}
+
+
+
+/* Logo */
 
 .brand{
 
-    max-width:1200px;
+display:flex;
 
-    margin:auto;
+align-items:center;
 
-    padding:28px 20px 10px;
+justify-content:center;
 
-    display:flex;
+gap:30px;
 
-    align-items:center;
+padding:35px 25px;
 
-    justify-content:center;
+max-width:1200px;
 
-    gap:28px;
+margin:auto;
 
 }
 
 .brand-logo{
 
-    width:200px;
+width:190px;
 
-    height:auto;
-
-    display:block;
-
-    flex-shrink:0;
+animation:fade 1s ease;
 
 }
 
 .divider{
 
-    flex:1;
+flex:1;
 
-    height:1px;
+height:1px;
 
-    background:linear-gradient(
-        to right,
-        transparent,
-        #d6d6d6,
-        transparent
-    );
+background:#e5e7eb;
 
 }
 
 
-/* ---------- HERO ---------- */
+
+/* Hero */
 
 .hero{
 
-    max-width:1200px;
+max-width:950px;
 
-    margin:auto;
+margin:auto;
 
-    text-align:center;
+padding:10px 20px 40px;
 
-    padding:15px 20px 40px;
+text-align:center;
+
+position:relative;
+
+}
+
+.hero::before{
+
+content:"";
+
+position:absolute;
+
+width:450px;
+
+height:450px;
+
+background:#4fc3ff;
+
+filter:blur(140px);
+
+opacity:.15;
+
+border-radius:50%;
+
+left:50%;
+
+transform:translateX(-50%);
+
+top:120px;
+
+z-index:-1;
 
 }
 
 .hero-image{
 
-    width:100%;
+width:100%;
 
-    max-width:900px;
+display:block;
 
-    display:block;
+margin:auto;
 
-    margin:auto;
+animation:fade 1s ease;
 
 }
+
+
 
 .cta-btn{
 
-    display:inline-flex;
+display:inline-block;
 
-    align-items:center;
+margin-top:40px;
 
-    justify-content:center;
+padding:18px 60px;
 
-    gap:10px;
+background:#0EA5E9;
 
-    margin-top:35px;
+color:white;
 
-    background:#0EA5E9;
+font-size:24px;
 
-    color:#fff;
+font-weight:800;
 
-    text-decoration:none;
+text-decoration:none;
 
-    font-size:22px;
+border-radius:999px;
 
-    font-weight:700;
+transition:.35s;
 
-    padding:18px 50px;
-
-    border-radius:999px;
-
-    transition:.3s;
+box-shadow:0 15px 45px rgba(14,165,233,.35);
 
 }
+
+
 
 .cta-btn:hover{
 
-    transform:translateY(-3px);
+background:#0284C7;
 
-    box-shadow:0 14px 40px rgba(14,165,233,.35);
+transform:translateY(-4px);
 
-}
-
-.trust-badges{
-
-    margin-top:42px;
-
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:34px;
-
-}
-
-.badge{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    color:#555;
-
-    font-size:15px;
-
-}
-
-.badge span{
-
-    font-size:22px;
+box-shadow:0 22px 60px rgba(14,165,233,.45);
 
 }
 
 
-/* ---------- MOBILE ---------- */
 
-@media (max-width:768px){
+/* Trust */
 
-    .brand{
+.trust{
 
-        gap:15px;
+max-width:1000px;
 
-        padding:22px 15px 8px;
+margin:60px auto;
 
-    }
+padding:0 20px;
 
-    .brand-logo{
+display:grid;
 
-        width:150px;
+grid-template-columns:repeat(3,1fr);
 
-    }
-
-    .divider{
-
-        opacity:.6;
-
-    }
-
-    .cta-btn{
-
-        width:100%;
-
-        max-width:340px;
-
-        font-size:20px;
-
-    }
-
-    .trust-badges{
-
-        gap:18px;
-
-        flex-direction:column;
-
-    }
-
-}
-/* ---------- FADE ANIMATION ---------- */
-
-@keyframes fadeUp {
-
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+gap:25px;
 
 }
 
-/* Logo */
+
+
+.trust-card{
+
+background:white;
+
+border:1px solid #eef2f7;
+
+border-radius:22px;
+
+padding:35px 20px;
+
+text-align:center;
+
+box-shadow:0 15px 35px rgba(0,0,0,.05);
+
+transition:.3s;
+
+}
+
+
+
+.trust-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+
+
+.icon{
+
+font-size:34px;
+
+margin-bottom:18px;
+
+}
+
+
+
+.trust-card h3{
+
+font-size:20px;
+
+font-weight:700;
+
+}
+
+
+
+/* Animation */
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:768px){
+
 .brand-logo{
 
-    opacity:0;
-
-    animation:fadeUp .8s ease forwards;
+width:150px;
 
 }
 
-/* Hero image */
-.hero-image{
+.trust{
 
-    opacity:0;
-
-    animation:fadeUp .8s ease forwards;
-    animation-delay:.2s;
+grid-template-columns:1fr;
 
 }
 
-/* Button */
 .cta-btn{
 
-    opacity:0;
+width:100%;
 
-    animation:fadeUp .8s ease forwards;
-    animation-delay:.4s;
+max-width:330px;
 
-}
-
-/* Trust badges */
-.trust-badges{
-
-    opacity:0;
-
-    animation:fadeUp .8s ease forwards;
-    animation-delay:.6s;
+font-size:22px;
 
 }
-body{
-    font-family:"Cairo",sans-serif;
+
 }
