@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FREEZE – مروحة تبريد 5 فتحات</title>
+    <title>FREEZE – 5-Hole Cooling Fan</title>
+
+    <!-- Google Font: Alexandria (premium Arabic + English) -->
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
     <style>
         /* ----- RESET & BASE ----- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            font-family: 'Alexandria', 'Inter', system-ui, -apple-system, sans-serif;
         }
 
         body {
@@ -25,10 +29,10 @@
             padding: 0 20px;
         }
 
-        /* ----- ANNOUNCEMENT BAR (static, not sticky) ----- */
+        /* ----- ANNOUNCEMENT BAR (static) ----- */
         .announcement-bar {
-            background-color: #0b1a33; /* dark navy */
-            color: #a8d8ea; /* sky blue */
+            background-color: #0b1a33;
+            color: #a8d8ea;
             text-align: center;
             padding: 10px 16px;
             font-size: 15px;
@@ -40,14 +44,14 @@
             color: #ffffff;
         }
 
-        /* ----- LOGO ----- */
+        /* ----- LOGO (now smaller) ----- */
         .logo-wrapper {
             text-align: center;
-            padding: 28px 0 16px 0;
+            padding: 24px 0 12px 0;
             background-color: #ffffff;
         }
         .logo-wrapper img {
-            max-width: 200px;
+            max-width: 130px; /* reduced from 200px */
             height: auto;
             display: inline-block;
         }
@@ -151,13 +155,26 @@
             font-weight: 700;
         }
 
-        /* ----- VIDEO ----- */
+        /* ----- VIDEO (vertical / 9:16) ----- */
+        .video-section {
+            margin: 28px 0 10px 0;
+            text-align: center;
+        }
+        .video-section h2 {
+            font-size: 22px;
+            color: #0b1a33;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
         .video-wrapper {
-            margin: 28px 0 30px 0;
-            border-radius: 14px;
-            overflow: hidden;
+            max-width: 360px;
+            margin: 0 auto;
+            aspect-ratio: 9 / 16;
             background: #0b1a33;
-            aspect-ratio: 16 / 9;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
         }
         .video-wrapper video {
             width: 100%;
@@ -166,77 +183,13 @@
             object-fit: cover;
         }
 
-        /* ----- BENEFITS (4–5 points) ----- */
-        .benefits {
-            background: #f8faff;
-            padding: 28px 24px;
+        /* ----- IMAGE REPLACEMENTS (comparison & testimonials) ----- */
+        .section-image {
+            width: 100%;
             border-radius: 16px;
-            margin: 0 0 30px 0;
-            border: 1px solid #e6edf5;
-        }
-        .benefits h2 {
-            font-size: 24px;
-            color: #0b1a33;
-            text-align: center;
-            margin-bottom: 18px;
-            font-weight: 700;
-        }
-        .benefits ul {
-            list-style: none;
-            padding: 0;
-        }
-        .benefits li {
-            padding: 10px 0 10px 36px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%234a90b0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>') right center no-repeat;
-            background-size: 22px;
-            border-bottom: 1px solid #eef3f8;
-            font-size: 17px;
-            color: #1a2a44;
-        }
-        .benefits li:last-child {
-            border-bottom: none;
-        }
-        .benefits strong {
-            color: #0b1a33;
-        }
-
-        /* ----- TESTIMONIALS ----- */
-        .testimonials {
-            margin: 0 0 28px 0;
-        }
-        .testimonials h2 {
-            font-size: 24px;
-            color: #0b1a33;
-            text-align: center;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-        .testimonial-card {
-            background: #ffffff;
-            border-right: 5px solid #4a90b0;
-            padding: 18px 22px;
-            margin-bottom: 18px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-            border: 1px solid #ecf2f8;
-            border-right-width: 6px;
-        }
-        .testimonial-card .stars {
-            color: #f5a623;
-            font-size: 18px;
-            letter-spacing: 2px;
-            margin-bottom: 6px;
-        }
-        .testimonial-card p {
-            font-size: 16px;
-            color: #1e2e4a;
-            line-height: 1.8;
-        }
-        .testimonial-card .author {
-            margin-top: 8px;
-            font-weight: 600;
-            color: #0b1a33;
-            font-size: 15px;
+            margin: 24px 0 10px 0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+            display: block;
         }
 
         /* ----- BONUS TRUST LINE ----- */
@@ -248,7 +201,7 @@
             font-size: 17px;
             font-weight: 600;
             color: #0b1a33;
-            margin: 0 0 30px 0;
+            margin: 20px 0 30px 0;
             border: 1px solid #c5dcec;
         }
 
@@ -280,7 +233,7 @@
             margin-top: 8px;
         }
 
-        /* ----- FOOTER ----- */
+        /* ----- FOOTER (100% English) ----- */
         .footer {
             background: #0b1a33;
             color: #c8dce8;
@@ -316,6 +269,12 @@
         .footer-col a:hover {
             color: #ffffff;
             text-decoration: underline;
+        }
+        .footer-logo {
+            max-width: 100px;
+            height: auto;
+            display: block;
+            margin-bottom: 10px;
         }
         .footer-social {
             display: flex;
@@ -353,7 +312,7 @@
                 padding: 8px 12px;
             }
             .logo-wrapper img {
-                max-width: 150px;
+                max-width: 100px;
             }
             .new-price {
                 font-size: 28px;
@@ -365,32 +324,28 @@
                 font-size: 19px;
                 padding: 14px 32px;
             }
-            .benefits li {
-                font-size: 15px;
-                padding: 8px 0 8px 30px;
-            }
             .trust-badges {
                 gap: 14px;
                 font-size: 13px;
             }
-            .testimonial-card p {
-                font-size: 15px;
-            }
             .footer-inner {
                 flex-direction: column;
                 gap: 16px;
+            }
+            .video-wrapper {
+                max-width: 280px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== 1. ANNOUNCEMENT BAR (static) ===== -->
+    <!-- ===== 1. ANNOUNCEMENT BAR ===== -->
     <div class="announcement-bar">
         🚀 Livraison rapide + 2 moules à glace OFFERTS !
     </div>
 
-    <!-- ===== 2. LOGO ===== -->
+    <!-- ===== 2. LOGO (smaller) ===== -->
     <div class="logo-wrapper">
         <img src="assets/logo.webp" alt="FREEZE logo" />
     </div>
@@ -404,10 +359,10 @@
         <div class="cta-section">
             <div class="price-block">
                 <span class="old-price">330 MAD</span>
-                <span class="new-price">219 MAD <small>شاملة الضريبة</small></span>
+                <span class="new-price">219 MAD <small>incl. tax</small></span>
             </div>
             <a href="#order-form" class="cta-button">اطلب الآن</a>
-            <div class="cta-sub">الدفع عند الاستلام – توصيل سريع</div>
+            <div class="cta-sub">Cash on delivery – Fast shipping</div>
         </div>
 
         <!-- ===== 5. TRUST BADGES ===== -->
@@ -417,86 +372,57 @@
             <span class="trust-item"><span class="icon">✓</span> ضمان الجودة 100%</span>
         </div>
 
-        <!-- ===== 6. VIDEO ===== -->
-        <div class="video-wrapper">
-            <video controls playsinline preload="metadata">
-                <source src="assets/VN20260702_010209.mp4" type="video/mp4" />
-                متصفحك لا يدعم الفيديو.
-            </video>
-        </div>
-
-        <!-- ===== 7. BENEFITS (5 points) ===== -->
-        <div class="benefits">
-            <h2>مميزات FREEZE</h2>
-            <ul>
-                <li><strong>استخدامات متعددة</strong> – مروحة تبريد + مرطب هواء + إضاءة ليلية 7 ألوان.</li>
-                <li><strong>هدية حصرية</strong> – تحصل على <strong>قالبين لصنع الثلج</strong> مجاناً مع كل طلب.</li>
-                <li><strong>مروحة 5 فتحات</strong> – هواء بارد وقوي يغطي مساحة واسعة.</li>
-                <li><strong>صامتة وموفرة</strong> – مناسبة للمكتب والغرفة، صوت هادئ واستهلاك منخفض.</li>
-                <li><strong>خزان ماء 600 مل</strong> – يعمل لساعات طويلة بدون تعبئة متكررة.</li>
-            </ul>
-        </div>
-
-        <!-- ===== 8. TESTIMONIALS (4) ===== -->
-        <div class="testimonials">
-            <h2>آراء الزبناء</h2>
-
-            <div class="testimonial-card">
-                <div class="stars">★★★★★</div>
-                <p>"هاد المروحة فاجأتني بصراحة. فالنهار مع السخونية كتخرج هواء بارد ملي كنزيدلها الماء والثلج. وليداتي ولات كتعجبهم بزاف. التوصيل كان سريع وخلاصت غير ملي وصلاتني."</p>
-                <div class="author">– أمينة، الدار البيضاء</div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="stars">★★★★★</div>
-                <p>"كنخدم قدام البيسي طول النهار وكنت كنموت بالسخونية. دابا كنخدم مرتاح، الصوت ديالها هادئ وما كتصرفش بزاف ديال الضو. أنصح بها."</p>
-                <div class="author">– يوسف، الرباط</div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="stars">★★★★★</div>
-                <p>"كنت متردد نطلبها ولكن خرجات أحسن من اللي كنت متوقع. الجودة زوينة، سهلة الاستعمال، والماء كيبرد الجو فعلاً. تستاهل كل درهم."</p>
-                <div class="author">– سفيان، مراكش</div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="stars">★★★★★</div>
-                <p>"أحسن حاجة هي الدفع عند الاستلام، هكا كنت مرتاح. المنتج وصل كيف الصور وخدمتو من أول نهار. خصوصاً فالليل كتعطي جو بارد ومريح."</p>
-                <div class="author">– خديجة، أكادير</div>
+        <!-- ===== 6. VIDEO (vertical) ===== -->
+        <div class="video-section">
+            <h2>how it work:</h2>
+            <div class="video-wrapper">
+                <video controls playsinline preload="metadata">
+                    <source src="assets/VN20260702_010209.mp4" type="video/mp4" />
+                    Your browser does not support the video.
+                </video>
             </div>
         </div>
+
+        <!-- ===== 7. COMPARISON TABLE (image) ===== -->
+        <img src="assets/comparison_1_.webp" alt="FREEZE comparison table" class="section-image" />
+
+        <!-- ===== 8. TESTIMONIALS (image) ===== -->
+        <img src="assets/testimonials_1_.webp" alt="FREEZE testimonials" class="section-image" />
 
         <!-- ===== 9. BONUS TRUST LINE ===== -->
         <div class="bonus-trust">
-            ★ أكثر من 500 زبون فالمغرب اختارو هاد المروحة واستافدو من التوصيل والدفع عند الاستلام.
+            ★ More than 500 customers in Morocco chose this fan and enjoyed fast delivery & cash on payment.
         </div>
 
         <!-- ===== 10. FORM ===== -->
         <div class="form-section" id="order-form">
-            <h2>📦 أطلب الآن</h2>
+            <h2>📦 Order now</h2>
             <!-- IMPORTANT: Replace the src below with your actual Google Form embed URL.
                  Get it from: Forms > Send > Embed tab > copy src="..." -->
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeAoRttIqHCK7MNIJrMJeDNO5gW1lpRwS0gUZiSa0w7wXKM9w/viewform?usp=dialog" title="FREEZE order form"></iframe>
-            <div class="form-note">سنؤكد طلبك عبر واتساب خلال 24 ساعة</div>
+            <iframe src="https://docs.google.com/forms/d/e/Wbx92UMBTXJbxwCD9/viewform?embedded=true" title="FREEZE order form"></iframe>
+            <div class="form-note">We will confirm your order via WhatsApp within 24 hours.</div>
         </div>
 
     </div>
 
-    <!-- ===== 11. FOOTER ===== -->
+    <!-- ===== 11. FOOTER (English, with logo & brand goal) ===== -->
     <div class="footer">
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-col">
-                    <h4>FREEZE</h4>
-                    <p>مروحة تبريد 5 فتحات<br />"ماشي عادي" – Everyday, elevated.</p>
+                    <img src="assets/logo.webp" alt="FREEZE logo" class="footer-logo" />
+                    <p style="font-size:14px; color:#b0c8da; line-height:1.5;">
+                        Premium cooling solutions for every moment.<br />
+                        Bold, elevated, and made for you.
+                    </p>
                 </div>
                 <div class="footer-col">
-                    <h4>تواصل</h4>
+                    <h4>Contact</h4>
                     <p>📧 <a href="mailto:freezemorocco@gmail.com">freezemorocco@gmail.com</a></p>
                     <p>📱 <a href="https://wa.me/212691354018" target="_blank">+212 691-354018</a></p>
                 </div>
                 <div class="footer-col">
-                    <h4>تابعنا</h4>
+                    <h4>Follow Us</h4>
                     <div class="footer-social">
                         <a href="https://www.instagram.com/brand.freeze" target="_blank">Instagram</a>
                         <a href="https://www.tiktok.com/@freeze.brand" target="_blank">TikTok</a>
@@ -504,7 +430,7 @@
                 </div>
             </div>
             <div class="footer-copy">
-                &copy; 2026 FREEZE – جميع الحقوق محفوظة
+                &copy; 2026 FREEZE – All Rights Reserved.
             </div>
         </div>
     </div>
