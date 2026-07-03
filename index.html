@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FREEZE – 5-Hole Cooling Fan</title>
 
-    <!-- Google Font: Alexandria (premium Arabic + English) -->
+    <!-- Google Font: Alexandria -->
     <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
     <style>
@@ -14,12 +14,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Alexandria', 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Alexandria', 'Inter', system-ui, sans-serif;
         }
 
         body {
-            background-color: #ffffff;
-            color: #1a1a2e;
+            background: #ffffff;
+            color: #0b1a33;
             line-height: 1.6;
         }
 
@@ -44,34 +44,21 @@
             color: #ffffff;
         }
 
-        /* ----- LOGO (now smaller) ----- */
-        .logo-wrapper {
-            text-align: center;
-            padding: 24px 0 12px 0;
-            background-color: #ffffff;
-        }
-        .logo-wrapper img {
-            max-width: 130px; /* reduced from 200px */
-            height: auto;
-            display: inline-block;
-        }
-
-        /* ----- HERO IMAGE ----- */
-        .hero-img {
+        /* ----- FULL-WIDTH IMAGES ----- */
+        .full-width-img {
             width: 100%;
             display: block;
-            border-radius: 12px;
-            margin: 6px 0 20px 0;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            margin: 0;
+            padding: 0;
         }
 
-        /* ----- CTA SECTION (price + button) ----- */
+        /* ----- CTA SECTION ----- */
         .cta-section {
             background: #f8faff;
             padding: 22px 20px 28px 20px;
             border-radius: 16px;
             text-align: center;
-            margin: 0 0 28px 0;
+            margin: 18px 0 28px 0;
             border: 1px solid #e6edf5;
         }
         .price-block {
@@ -128,34 +115,7 @@
             color: #4a6a8a;
         }
 
-        /* ----- TRUST BADGES ----- */
-        .trust-badges {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            padding: 16px 10px 10px 10px;
-            margin-bottom: 20px;
-            border-top: 1px solid #eef3f8;
-            border-bottom: 1px solid #eef3f8;
-        }
-        .trust-item {
-            font-size: 15px;
-            color: #1a2a44;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .trust-item .icon {
-            display: inline-block;
-            width: 20px;
-            text-align: center;
-            color: #2a7a9a;
-            font-weight: 700;
-        }
-
-        /* ----- VIDEO (vertical / 9:16) ----- */
+        /* ----- VIDEO (vertical) ----- */
         .video-section {
             margin: 28px 0 10px 0;
             text-align: center;
@@ -183,15 +143,6 @@
             object-fit: cover;
         }
 
-        /* ----- IMAGE REPLACEMENTS (comparison & testimonials) ----- */
-        .section-image {
-            width: 100%;
-            border-radius: 16px;
-            margin: 24px 0 10px 0;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-            display: block;
-        }
-
         /* ----- BONUS TRUST LINE ----- */
         .bonus-trust {
             background: #eaf3fa;
@@ -201,42 +152,157 @@
             font-size: 17px;
             font-weight: 600;
             color: #0b1a33;
-            margin: 20px 0 30px 0;
+            margin: 24px 0 30px 0;
             border: 1px solid #c5dcec;
         }
 
-        /* ----- FORM SECTION ----- */
-        .form-section {
+        /* ===== FAQ ACCORDION ===== */
+        .faq-section {
             margin: 0 0 30px 0;
+        }
+        .faq-section h2 {
+            font-size: 24px;
+            color: #0b1a33;
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e0e8f0;
+            padding: 6px 0;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: 600;
+            color: #0b1a33;
+            transition: 0.2s;
+            user-select: none;
+        }
+        .faq-question:hover {
+            color: #2a7a9a;
+        }
+        .faq-question .icon-plus {
+            font-size: 24px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+            display: inline-block;
+            color: #4a90b0;
+            min-width: 30px;
+            text-align: center;
+        }
+        .faq-question .icon-plus.rotated {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s ease;
+            padding: 0 0 0 10px;
+            font-size: 16px;
+            color: #1e3a5a;
+            line-height: 1.8;
+        }
+        .faq-answer.open {
+            max-height: 300px;
+            padding: 0 0 16px 10px;
+        }
+
+        /* ===== CUSTOM FORM ===== */
+        .form-section {
             background: #f8faff;
-            padding: 20px 10px 10px 10px;
+            padding: 28px 24px 32px 24px;
             border-radius: 16px;
             border: 1px solid #e6edf5;
+            margin: 0 0 30px 0;
         }
         .form-section h2 {
             text-align: center;
-            font-size: 24px;
+            font-size: 26px;
             color: #0b1a33;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
+            font-weight: 700;
         }
-        .form-section iframe {
+        .form-section .subtitle {
+            text-align: center;
+            color: #4a6a8a;
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 15px;
+            color: #0b1a33;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select {
             width: 100%;
-            height: 780px;
-            border: none;
+            padding: 14px 16px;
+            font-size: 16px;
+            border: 2px solid #dce6ef;
             border-radius: 12px;
             background: #ffffff;
+            color: #0b1a33;
+            transition: 0.2s;
+            font-family: 'Alexandria', sans-serif;
+        }
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #4a90b0;
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(74, 144, 176, 0.15);
+        }
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230b1a33' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");
+            background-repeat: no-repeat;
+            background-position: left 16px center;
+            background-size: 16px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: #0b1a33;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 700;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 6px 0 #060f1f;
+            margin-top: 6px;
+            font-family: 'Alexandria', sans-serif;
+        }
+        .submit-btn:hover {
+            background: #1a3355;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0 #060f1f;
+        }
+        .submit-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #060f1f;
         }
         .form-note {
             text-align: center;
             font-size: 14px;
             color: #5a7a9a;
-            margin-top: 8px;
+            margin-top: 12px;
         }
 
-        /* ----- FOOTER (100% English) ----- */
+        /* ===== FOOTER (light blue, dark navy) ===== */
         .footer {
-            background: #0b1a33;
-            color: #c8dce8;
+            background: #eaf3fa;
+            color: #0b1a33;
             padding: 30px 20px 24px 20px;
             border-radius: 20px 20px 0 0;
             margin-top: 10px;
@@ -251,23 +317,23 @@
             flex: 1 1 160px;
         }
         .footer-col h4 {
-            color: #ffffff;
+            color: #0b1a33;
             font-size: 16px;
             margin-bottom: 8px;
-            border-bottom: 2px solid #2a5a7a;
+            border-bottom: 2px solid #b0c8da;
             padding-bottom: 4px;
             display: inline-block;
         }
         .footer-col p,
         .footer-col a {
             font-size: 15px;
-            color: #b0c8da;
+            color: #1a3a55;
             text-decoration: none;
             display: block;
             margin: 4px 0;
         }
         .footer-col a:hover {
-            color: #ffffff;
+            color: #0b1a33;
             text-decoration: underline;
         }
         .footer-logo {
@@ -283,26 +349,87 @@
             flex-wrap: wrap;
         }
         .footer-social a {
-            color: #b0c8da;
+            color: #1a3a55;
             font-size: 15px;
             text-decoration: none;
             padding: 4px 10px;
-            border: 1px solid #2a5a7a;
+            border: 1px solid #b0c8da;
             border-radius: 30px;
             transition: 0.2s;
         }
         .footer-social a:hover {
-            background: #2a5a7a;
+            background: #0b1a33;
             color: #ffffff;
-            border-color: #4a90b0;
+            border-color: #0b1a33;
         }
         .footer-copy {
             text-align: center;
-            border-top: 1px solid #1a3a55;
+            border-top: 1px solid #b0c8da;
             padding-top: 18px;
             margin-top: 20px;
             font-size: 14px;
-            color: #6a8aaa;
+            color: #1a3a55;
+        }
+
+        /* ===== STICKY CTA (fixed bottom) ===== */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #0b1a33;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            z-index: 999;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.20);
+            border-top: 2px solid #4a90b0;
+        }
+        .sticky-cta .price-wrap {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            color: #ffffff;
+        }
+        .sticky-cta .price-wrap .old {
+            font-size: 16px;
+            color: #a8c8e0;
+            text-decoration: line-through;
+        }
+        .sticky-cta .price-wrap .new {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+        }
+        .sticky-cta .price-wrap .new small {
+            font-size: 14px;
+            font-weight: 400;
+            color: #a8d8ea;
+        }
+        .sticky-cta .sticky-btn {
+            background: #4a90b0;
+            color: #ffffff;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 60px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: 'Alexandria', sans-serif;
+            box-shadow: 0 4px 0 #1a4a5a;
+        }
+        .sticky-cta .sticky-btn:hover {
+            background: #5aa0c0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #1a4a5a;
+        }
+        .sticky-cta .sticky-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #1a4a5a;
         }
 
         /* ----- RESPONSIVE ----- */
@@ -310,9 +437,6 @@
             .announcement-bar {
                 font-size: 13px;
                 padding: 8px 12px;
-            }
-            .logo-wrapper img {
-                max-width: 100px;
             }
             .new-price {
                 font-size: 28px;
@@ -324,16 +448,28 @@
                 font-size: 19px;
                 padding: 14px 32px;
             }
-            .trust-badges {
-                gap: 14px;
-                font-size: 13px;
+            .video-wrapper {
+                max-width: 280px;
+            }
+            .sticky-cta {
+                padding: 10px 14px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 8px;
+            }
+            .sticky-cta .price-wrap {
+                justify-content: center;
+            }
+            .sticky-cta .sticky-btn {
+                width: 100%;
+                text-align: center;
             }
             .footer-inner {
                 flex-direction: column;
                 gap: 16px;
             }
-            .video-wrapper {
-                max-width: 280px;
+            .form-section {
+                padding: 20px 16px;
             }
         }
     </style>
@@ -345,17 +481,12 @@
         🚀 Livraison rapide + 2 moules à glace OFFERTS !
     </div>
 
-    <!-- ===== 2. LOGO (smaller) ===== -->
-    <div class="logo-wrapper">
-        <img src="assets/logo.webp" alt="FREEZE logo" />
-    </div>
+    <!-- ===== 2. HERO IMAGE (full width) ===== -->
+    <img src="assets/producthero.webp" alt="FREEZE 5-hole cooling fan" class="full-width-img" />
 
     <div class="container">
 
-        <!-- ===== 3. HERO IMAGE ===== -->
-        <img src="assets/producthero.webp" alt="FREEZE 5-hole cooling fan" class="hero-img" />
-
-        <!-- ===== 4. CTA + PRICE ===== -->
+        <!-- ===== 3. CTA SECTION ===== -->
         <div class="cta-section">
             <div class="price-block">
                 <span class="old-price">330 MAD</span>
@@ -365,14 +496,7 @@
             <div class="cta-sub">Cash on delivery – Fast shipping</div>
         </div>
 
-        <!-- ===== 5. TRUST BADGES ===== -->
-        <div class="trust-badges">
-            <span class="trust-item"><span class="icon">✓</span> الدفع عند الاستلام</span>
-            <span class="trust-item"><span class="icon">✓</span> توصيل سريع 2-3 أيام</span>
-            <span class="trust-item"><span class="icon">✓</span> ضمان الجودة 100%</span>
-        </div>
-
-        <!-- ===== 6. VIDEO (vertical) ===== -->
+        <!-- ===== 4. VIDEO (vertical) ===== -->
         <div class="video-section">
             <h2>how it work:</h2>
             <div class="video-wrapper">
@@ -383,35 +507,131 @@
             </div>
         </div>
 
-        <!-- ===== 7. COMPARISON TABLE (image) ===== -->
-        <img src="assets/comparison_1_.webp" alt="FREEZE comparison table" class="section-image" />
+    </div>
 
-        <!-- ===== 8. TESTIMONIALS (image) ===== -->
-        <img src="assets/testimonials_1_.webp" alt="FREEZE testimonials" class="section-image" />
+    <!-- ===== 5. COMPARISON IMAGE (full width) ===== -->
+    <img src="assets/comparison_1_.webp" alt="FREEZE comparison table" class="full-width-img" />
 
-        <!-- ===== 9. BONUS TRUST LINE ===== -->
+    <!-- ===== 6. TESTIMONIALS IMAGE (full width) ===== -->
+    <img src="assets/testimonials_1_.webp" alt="FREEZE testimonials" class="full-width-img" />
+
+    <div class="container">
+
+        <!-- ===== 7. BONUS TRUST LINE ===== -->
         <div class="bonus-trust">
             ★ More than 500 customers in Morocco chose this fan and enjoyed fast delivery & cash on payment.
         </div>
 
-        <!-- ===== 10. FORM ===== -->
+        <!-- ===== 8. FAQ SECTION (Accordion) ===== -->
+        <div class="faq-section">
+            <h2>Common Questions</h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>كم تستغرق مدة التوصيل؟</span>
+                    <span class="icon-plus">+</span>
+                </div>
+                <div class="faq-answer">التوصيل سريع خلال 2 إلى 3 أيام عمل إلى جميع مدن المغرب.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>كيف يتم الدفع؟</span>
+                    <span class="icon-plus">+</span>
+                </div>
+                <div class="faq-answer">الدفع عند الاستلام – ما عليك إلا دفع المبلغ حين يصلك المنتج.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>ماذا يوجد داخل العلبة؟</span>
+                    <span class="icon-plus">+</span>
+                </div>
+                <div class="faq-answer">المروحة + كابل USB + قالبين لصنع الثلج مجاناً + دليل الاستخدام.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>هل تحتاج المروحة إلى بطارية؟</span>
+                    <span class="icon-plus">+</span>
+                </div>
+                <div class="faq-answer">لا، تعمل عبر كابل USB (شاحن الهاتف أو الكمبيوتر). يمكنك تشغيلها في أي مكان فيه منفذ USB.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>كيف أستخدم قوالب الثلج مع المروحة؟</span>
+                    <span class="icon-plus">+</span>
+                </div>
+                <div class="faq-answer">تضع الماء في القالبين، تضعهما في الثلاجة حتى يتجمد، ثم تضيف المكعبات إلى خزان الماء للحصول على هواء أبرد.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>هل يمكنني استرجاع المنتج؟</span>
+                    <span class="icon-plus">+</span>
+                </div>
+                <div class="faq-answer">نعم، في حالة وجود عيب صناعي، نستبدل المنتج خلال 7 أيام من الاستلام.</div>
+            </div>
+        </div>
+
+        <!-- ===== 9. CUSTOM ORDER FORM (branded, no Google theme) ===== -->
         <div class="form-section" id="order-form">
             <h2>📦 Order now</h2>
-            <!-- IMPORTANT: Replace the src below with your actual Google Form embed URL.
-                 Get it from: Forms > Send > Embed tab > copy src="..." -->
-            <iframe src="https://docs.google.com/forms/d/e/Wbx92UMBTXJbxwCD9/viewform?embedded=true" title="FREEZE order form"></iframe>
-            <div class="form-note">We will confirm your order via WhatsApp within 24 hours.</div>
+            <p class="subtitle">Fill in your details and we'll confirm your order via WhatsApp.</p>
+
+            <!-- 
+                IMPORTANT: 
+                This form submits directly to your Google Form.
+                You MUST replace the 'entry.XXXXXX' values below with the actual field IDs from your form.
+                
+                How to find them:
+                1. Open your Google Form in edit mode.
+                2. Right-click on a field (e.g., Name) and select "Inspect".
+                3. Look for the 'name' attribute inside the <input> tag – it will be something like "entry.123456789".
+                4. Copy that value and paste it into the corresponding 'name' attribute below.
+            -->
+            <form action="https://docs.google.com/forms/d/e/Wbx92UMBTXJbxwCD9/formResponse" method="POST" target="_blank">
+                
+                <div class="form-group">
+                    <label for="name">الاسم الكامل</label>
+                    <input type="text" id="name" name="entry.485275143" placeholder="أدخل اسمك الكامل" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف</label>
+                    <input type="tel" id="phone" name="entry.2078925050" placeholder="أدخل رقم هاتفك" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="city">المدينة</label>
+                    <input type="text" id="city" name="entry.524054928" placeholder="أدخل مدينتك" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="quantity">الكمية</label>
+                    <select id="quantity" name="entry.1561835429" required>
+                        <option value="">اختر الكمية</option>
+                        <option value="1">1 وحدة – 219 MAD</option>
+                        <option value="2">2 وحدات – 399 MAD</option>
+                        <option value="3">3 وحدات – 579 MAD</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">أرسل طلبي الآن</button>
+                <div class="form-note">سيتم تأكيد طلبك عبر واتساب خلال 24 ساعة</div>
+            </form>
         </div>
 
     </div>
 
-    <!-- ===== 11. FOOTER (English, with logo & brand goal) ===== -->
+    <!-- ===== 10. FOOTER (light blue, dark navy) ===== -->
     <div class="footer">
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-col">
                     <img src="assets/logo.webp" alt="FREEZE logo" class="footer-logo" />
-                    <p style="font-size:14px; color:#b0c8da; line-height:1.5;">
+                    <p style="font-size:14px; line-height:1.6; color:#1a3a55;">
                         Premium cooling solutions for every moment.<br />
                         Bold, elevated, and made for you.
                     </p>
@@ -434,6 +654,44 @@
             </div>
         </div>
     </div>
+
+    <!-- ===== 11. STICKY CTA (fixed bottom) ===== -->
+    <div class="sticky-cta">
+        <div class="price-wrap">
+            <span class="old">330 MAD</span>
+            <span class="new">219 MAD <small>incl. tax</small></span>
+        </div>
+        <button class="sticky-btn" onclick="document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });">
+            اطلب الآن
+        </button>
+    </div>
+
+    <!-- ===== JAVASCRIPT: FAQ Toggle (+ rotates 45°) ===== -->
+    <script>
+        document.querySelectorAll('.faq-question').forEach(function(question) {
+            question.addEventListener('click', function() {
+                var answer = this.nextElementSibling;
+                var icon = this.querySelector('.icon-plus');
+
+                // Toggle answer visibility
+                if (answer.classList.contains('open')) {
+                    answer.classList.remove('open');
+                    icon.classList.remove('rotated');
+                } else {
+                    // Close all other answers (optional – makes it an accordion)
+                    document.querySelectorAll('.faq-answer').forEach(function(a) {
+                        a.classList.remove('open');
+                    });
+                    document.querySelectorAll('.icon-plus').forEach(function(i) {
+                        i.classList.remove('rotated');
+                    });
+
+                    answer.classList.add('open');
+                    icon.classList.add('rotated');
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
