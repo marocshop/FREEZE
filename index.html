@@ -486,11 +486,11 @@
 
     <div class="container">
 
-        <!-- ===== 3. CTA SECTION ===== -->
+        <!-- ===== 3. CTA SECTION (UPDATED PRICES) ===== -->
         <div class="cta-section">
             <div class="price-block">
-                <span class="old-price">330 MAD</span>
-                <span class="new-price">219 MAD <small>incl. tax</small></span>
+                <span class="old-price">399 MAD</span> <!-- OLD PRICE -->
+                <span class="new-price">249 MAD <small>incl. tax</small></span> <!-- NEW PRICE -->
             </div>
             <a href="#order-form" class="cta-button">اطلب الآن</a>
             <div class="cta-sub">Cash on delivery – Fast shipping</div>
@@ -575,7 +575,7 @@
             </div>
         </div>
 
-        <!-- ===== 9. CUSTOM ORDER FORM (branded, no Google theme) ===== -->
+       <!-- ===== 9. CUSTOM ORDER FORM (branded, no Google theme) ===== -->
         <div class="form-section" id="order-form">
             <h2>📦 Order now</h2>
             <p class="subtitle">Fill in your details and we'll confirm your order via WhatsApp.</p>
@@ -602,9 +602,9 @@
                     <label for="quantity">الكمية</label>
                     <select id="quantity" name="entry.1561835429" required>
                         <option value="">اختر الكمية</option>
-                        <option value="1">1 وحدة – 219 MAD</option>
-                        <option value="2">2 وحدات – 399 MAD</option>
-                        <option value="3">3 وحدات – 579 MAD</option>
+                        <option value="1">1 وحدة – 249 MAD</option>
+                        <option value="2">2 وحدات – 449 MAD</option>
+                        <option value="3">3 وحدات – 599 MAD</option>
                     </select>
                 </div>
 
@@ -612,6 +612,8 @@
                 <div class="form-note">سيتم تأكيد طلبك عبر واتساب خلال 24 ساعة</div>
             </form>
         </div>
+
+    </div>
 
     </div>
 
@@ -645,11 +647,11 @@
         </div>
     </div>
 
-    <!-- ===== 11. STICKY CTA (fixed bottom) ===== -->
+    <!-- ===== 11. STICKY CTA (fixed bottom, UPDATED PRICES) ===== -->
     <div class="sticky-cta">
         <div class="price-wrap">
-            <span class="old">330 MAD</span>
-            <span class="new">219 MAD <small>incl. tax</small></span>
+            <span class="old">399 MAD</span> <!-- OLD PRICE -->
+            <span class="new">249 MAD <small>incl. tax</small></span> <!-- NEW PRICE -->
         </div>
         <button class="sticky-btn" onclick="document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });">
             اطلب الآن
@@ -663,12 +665,10 @@
                 var answer = this.nextElementSibling;
                 var icon = this.querySelector('.icon-plus');
 
-                // Toggle answer visibility
                 if (answer.classList.contains('open')) {
                     answer.classList.remove('open');
                     icon.classList.remove('rotated');
                 } else {
-                    // Close all other answers (optional – makes it an accordion)
                     document.querySelectorAll('.faq-answer').forEach(function(a) {
                         a.classList.remove('open');
                     });
