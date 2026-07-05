@@ -512,6 +512,11 @@
     <!-- ===== 5. COMPARISON IMAGE (full width) ===== -->
     <img src="assets/comparison_1_.webp" alt="FREEZE comparison table" class="full-width-img" />
 
+     <!-- ===== 7. BONUS TRUST LINE ===== -->
+        <div class="bonus-trust">
+         🎁 هدية مجانية: جوج قوالب ثلج كيزيدو قوة التبريد وانتعاش أكثر  
+        </div>
+    
     <!-- ===== 6. TESTIMONIALS IMAGE (full width) ===== -->
     <img src="assets/testimonials_1_.webp" alt="FREEZE testimonials" class="full-width-img" />
 
@@ -520,7 +525,6 @@
         <!-- ===== 7. BONUS TRUST LINE ===== -->
         <div class="bonus-trust">
            الناس اللي جربوه قالو نفس الحاجة:
-
 "صغير فالحجم... كبير فالفرق."  
         </div>
 
@@ -577,14 +581,13 @@
             </div>
         </div>
 
-       <!-- ===== 9. CUSTOM ORDER FORM (branded, no Google theme) ===== -->
+        <!-- ===== 9. CUSTOM ORDER FORM (branded, no Google theme) ===== -->
         <div class="form-section" id="order-form">
             <h2>📦 عبي المعلومات التالية لتأكيد الطلب:</h2>
             <p class="subtitle">Fill in your details and we'll confirm your order via WhatsApp.</p>
 
-            
-            <form action="https://docs.google.com/forms/d/e/1Vl6RHbyP-DiVVF58eANLkCdbq25R6ErJl_ubEHk_dUg/formResponse" method="POST" target="_blank">
-                
+            <form action="#" method="POST" onsubmit="sendToWhatsApp(event)">
+
                 <div class="form-group">
                     <label for="name">الاسم الكامل</label>
                     <input type="text" id="name" name="entry.485275143" placeholder="أدخل اسمك الكامل" required />
@@ -613,9 +616,10 @@
                 <button type="submit" class="submit-btn">أرسل طلبي الآن</button>
                 <div class="form-note">سيتم تأكيد طلبك عبر واتساب خلال 24 ساعة</div>
             </form>
-        </div>
 
-    </div>
+            <!-- Hidden iframe for background Google Form submission -->
+            <iframe name="hiddenFrame" style="display:none;"></iframe>
+        </div>
 
     </div>
 
@@ -653,15 +657,18 @@
     <div class="sticky-cta">
         <div class="price-wrap">
             <span class="old">399 MAD</span> <!-- OLD PRICE -->
-            <span class="new">249 MAD <small>incl. tax</small></span> <!-- NEW PRICE -->
+            <span class="new">249 MAD </span> <!-- NEW PRICE -->
         </div>
         <button class="sticky-btn" onclick="document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });">
             اطلب الآن
         </button>
     </div>
 
-    <!-- ===== JAVASCRIPT: FAQ Toggle (+ rotates 45°) ===== -->
+    <!-- ===== JAVASCRIPT: FAQ Toggle + Form Submission ===== -->
     <script>
+        // ============================================================
+        // 1. FAQ ACCORDION (your existing code - preserved)
+        // ============================================================
         document.querySelectorAll('.faq-question').forEach(function(question) {
             question.addEventListener('click', function() {
                 var answer = this.nextElementSibling;
@@ -683,6 +690,48 @@
                 }
             });
         });
+
+        // ============================================================
+        // 2. ORDER FORM – SEND TO WHATSAPP + GOOGLE FORM (background)
+        // ============================================================
+        function sendToWhatsApp(event) {
+            event.preventDefault();
+
+            // Get form values
+            var name = document.getElementById('name').value;
+            var phone = document.getElementById('phone').value;
+            var city = document.getElementById('city').value;
+            var qtySelect = document.getElementById('quantity');
+            var quantityText = qtySelect.options[qtySelect.selectedIndex].text;
+
+            // Build WhatsApp message
+            var message = 'مرحباً FREEZE!%0A%0A';
+            message += 'أريد طلب المروحة:%0A';
+            message += 'الاسم: ' + name + '%0A';
+            message += 'رقم الهاتف: ' + phone + '%0A';
+            message += 'المدينة: ' + city + '%0A';
+            message += 'الكمية: ' + quantityText + '%0A%0A';
+            message += 'أؤكد طلبي. ✅';
+
+            // WhatsApp URL with your number
+            var whatsappUrl = 'https://wa.me/212691354018?text=' + message;
+
+            // Get the form and submit it to Google Form in the background
+            var form = document.querySelector('form');
+            form.action = 'https://docs.google.com/forms/d/e/1Vl6RHbyP-DiVVF58eANLkCdbq25R6ErJl_ubEHk_dUg/formResponse';
+            form.target = 'hiddenFrame';
+            form.submit();
+
+            // Open WhatsApp in a new tab after a short delay
+            setTimeout(function() {
+                window.open(whatsappUrl, '_blank');
+            }, 500);
+
+            // Reset form target so it doesn't break future submissions
+            setTimeout(function() {
+                form.target = '_blank';
+            }, 1000);
+        }
     </script>
 
 </body>
