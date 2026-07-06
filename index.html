@@ -586,8 +586,8 @@
             <h2>📦 عبي المعلومات التالية لتأكيد الطلب:</h2>
             <p class="subtitle">Fill in your details and we'll confirm your order via WhatsApp.</p>
 
-            <!-- FIXED: Natively targets the hidden iframe out-of-the-box -->
-            <form action="https://docs.google.com/forms/d/e/1Vl6RHbyP-DiVVF58eANLkCdbq25R6ErJl_ubEHk_dUg/formResponse" method="POST" target="hiddenFrame" onsubmit="sendToWhatsApp(event)">
+            <!-- FIXED: Submits natively to the correct target form response URL -->
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSeAoRttIqHCK7MNIJrMJeDNO5gW1lpRwS0gUZiSa0w7wXKM9w/formResponse" method="POST" target="hiddenFrame" onsubmit="sendToWhatsApp(event)">
 
                 <div class="form-group">
                     <label for="name">الاسم الكامل</label>
@@ -624,7 +624,7 @@
 
     </div>
 
-    <!-- ===== 10. FOOTER (light blue, dark navy) ===== -->
+    <!-- ===== 10. FOOTER ===== -->
     <div class="footer">
         <div class="container">
             <div class="footer-inner">
@@ -654,11 +654,11 @@
         </div>
     </div>
 
-    <!-- ===== 11. STICKY CTA (fixed bottom, UPDATED PRICES) ===== -->
+    <!-- ===== 11. STICKY CTA ===== -->
     <div class="sticky-cta">
         <div class="price-wrap">
-            <span class="old">399 MAD</span> <!-- OLD PRICE -->
-            <span class="new">249 MAD </span> <!-- NEW PRICE -->
+            <span class="old">399 MAD</span>
+            <span class="new">249 MAD </span>
         </div>
         <button class="sticky-btn" onclick="document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });">
             اطلب الآن
@@ -667,9 +667,7 @@
 
     <!-- ===== JAVASCRIPT: FAQ Toggle + Form Submission ===== -->
     <script>
-        // ============================================================
-        // 1. FAQ ACCORDION (Preserved)
-        // ============================================================
+        // 1. FAQ ACCORDION
         document.querySelectorAll('.faq-question').forEach(function(question) {
             question.addEventListener('click', function() {
                 var answer = this.nextElementSibling;
@@ -692,18 +690,14 @@
             });
         });
 
-        // ============================================================
-        // 2. ORDER FORM – SEND TO WHATSAPP + NATIVE BACKGROUND SUBMIT
-        // ============================================================
+        // 2. ORDER FORM – SEND TO WHATSAPP + BACKGROUND GOOGLE FORM
         function sendToWhatsApp(event) {
-            // Get form values
             var name = document.getElementById('name').value;
             var phone = document.getElementById('phone').value;
             var city = document.getElementById('city').value;
             var qtySelect = document.getElementById('quantity');
             var quantityText = qtySelect.options[qtySelect.selectedIndex].text;
 
-            // Build WhatsApp message
             var message = 'مرحباً FREEZE!%0A%0A';
             message += 'أريد طلب المروحة:%0A';
             message += 'الاسم: ' + name + '%0A';
@@ -712,13 +706,12 @@
             message += 'الكمية: ' + quantityText + '%0A%0A';
             message += 'أؤكد طلبي. ✅';
 
-            // WhatsApp URL with your number
             var whatsappUrl = 'https://wa.me/212691354018?text=' + message;
 
-            // Open WhatsApp in a new tab instantly
+            // Open WhatsApp immediately
             window.open(whatsappUrl, '_blank');
 
-            // Return true allows the HTML form to naturally fire its POST submission to the hidden iframe
+            // Form proceeds smoothly to the hidden iframe
             return true;
         }
     </script>
