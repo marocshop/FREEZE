@@ -581,12 +581,13 @@
             </div>
         </div>
 
-        <!-- ===== 9. CUSTOM ORDER FORM (branded, no Google theme) ===== -->
+        <!-- ===== 9. CUSTOM ORDER FORM (FIXED PIPELINE) ===== -->
         <div class="form-section" id="order-form">
             <h2>📦 عبي المعلومات التالية لتأكيد الطلب:</h2>
             <p class="subtitle">Fill in your details and we'll confirm your order via WhatsApp.</p>
 
-            <form action="#" method="POST" onsubmit="sendToWhatsApp(event)">
+            <!-- FIXED: Natively targets the hidden iframe out-of-the-box -->
+            <form action="https://docs.google.com/forms/d/e/1Vl6RHbyP-DiVVF58eANLkCdbq25R6ErJl_ubEHk_dUg/formResponse" method="POST" target="hiddenFrame" onsubmit="sendToWhatsApp(event)">
 
                 <div class="form-group">
                     <label for="name">الاسم الكامل</label>
@@ -667,7 +668,7 @@
     <!-- ===== JAVASCRIPT: FAQ Toggle + Form Submission ===== -->
     <script>
         // ============================================================
-        // 1. FAQ ACCORDION (your existing code - preserved)
+        // 1. FAQ ACCORDION (Preserved)
         // ============================================================
         document.querySelectorAll('.faq-question').forEach(function(question) {
             question.addEventListener('click', function() {
@@ -692,11 +693,9 @@
         });
 
         // ============================================================
-        // 2. ORDER FORM – SEND TO WHATSAPP + GOOGLE FORM (background)
+        // 2. ORDER FORM – SEND TO WHATSAPP + NATIVE BACKGROUND SUBMIT
         // ============================================================
         function sendToWhatsApp(event) {
-            event.preventDefault();
-
             // Get form values
             var name = document.getElementById('name').value;
             var phone = document.getElementById('phone').value;
@@ -716,21 +715,11 @@
             // WhatsApp URL with your number
             var whatsappUrl = 'https://wa.me/212691354018?text=' + message;
 
-            // Get the form and submit it to Google Form in the background
-            var form = document.querySelector('form');
-            form.action = 'https://docs.google.com/forms/d/e/1Vl6RHbyP-DiVVF58eANLkCdbq25R6ErJl_ubEHk_dUg/formResponse';
-            form.target = 'hiddenFrame';
-            form.submit();
+            // Open WhatsApp in a new tab instantly
+            window.open(whatsappUrl, '_blank');
 
-            // Open WhatsApp in a new tab after a short delay
-            setTimeout(function() {
-                window.open(whatsappUrl, '_blank');
-            }, 500);
-
-            // Reset form target so it doesn't break future submissions
-            setTimeout(function() {
-                form.target = '_blank';
-            }, 1000);
+            // Return true allows the HTML form to naturally fire its POST submission to the hidden iframe
+            return true;
         }
     </script>
 
