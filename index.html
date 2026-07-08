@@ -605,7 +605,7 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
             <p class="subtitle">Fill in your details and we'll confirm your order via WhatsApp.</p>
 
             <!-- FIXED: Submits natively to the correct target form response URL -->
-            <form action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSeAoRttIqHCK7MNIJrMJeDNO5gW1lpRwS0gUZiSa0w7wXKM9w/formResponse" method="POST" target="hiddenFrame" onsubmit="sendToWhatsApp(event)">
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSeAoRttIqHCK7MNIJrMJeDNO5gW1lpRwS0gUZiSa0w7wXKM9w/formResponse" method="POST" target="hiddenFrame" onsubmit="sendToWhatsApp(event)">
 
                 <div class="form-group">
                     <label for="name">الاسم الكامل</label>
@@ -729,36 +729,40 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
         });
 
         // 4. ORDER FORM – SEND TO WHATSAPP + PURCHASE TRACKING
-        function sendToWhatsApp(event) {
-            var name = document.getElementById('name').value;
-            var phone = document.getElementById('phone').value;
-            var city = document.getElementById('city').value;
-            var qtySelect = document.getElementById('quantity');
-            var quantityText = qtySelect.options[qtySelect.selectedIndex].text;
+function sendToWhatsApp(event) {
+    // 1. Get the values
+    var name = document.getElementById('name').value;
+    var phone = document.getElementById('phone').value;
+    var city = document.getElementById('city').value;
+    var qtySelect = document.getElementById('quantity');
+    var quantityText = qtySelect.options[qtySelect.selectedIndex].text;
 
-            var message = 'مرحباً FREEZE!%0A%0A';
-            message += 'أريد طلب المروحة:%0A';
-            message += 'الاسم: ' + name + '%0A';
-            message += 'رقم الهاتف: ' + phone + '%0A';
-            message += 'المدينة: ' + city + '%0A';
-            message += 'الكمية: ' + quantityText + '%0A%0A';
-            message += 'أؤكد طلبي. ✅';
+    // 2. Build the message
+    var message = 'مرحباً FREEZE!%0A%0A';
+    message += 'أريد طلب المروحة:%0A';
+    message += 'الاسم: ' + name + '%0A';
+    message += 'رقم الهاتف: ' + phone + '%0A';
+    message += 'المدينة: ' + city + '%0A';
+    message += 'الكمية: ' + quantityText + '%0A%0A';
+    message += 'أؤكد طلبي. ✅';
 
-            var whatsappUrl = 'https://wa.me/212691354018?text=' + message;
+    var whatsappUrl = 'https://wa.me/212691354018?text=' + message;
 
-            // Track Purchase
-            fbq('track', 'Purchase', {
-                value: 249,
-                currency: 'MAD'
-            });
+    // 3. Track Purchase event
+    fbq('track', 'Purchase', {
+        value: 249,
+        currency: 'MAD'
+    });
 
-            // Open WhatsApp with a slight delay for better tracking reliability
-            setTimeout(function () {
-                window.open(whatsappUrl, '_blank');
-            }, 300);
+    // 4. Trigger WhatsApp after a small delay
+    setTimeout(function () {
+        window.open(whatsappUrl, '_blank');
+    }, 500);
 
-            return true;
-        }
+    // 5. IMPORTANT: Do not return true/false here. 
+    // The form action/target handles the Google Form submission automatically.
+    // By not preventing default, the form will submit to your iframe.
+}
     </script>
 
 </body>
