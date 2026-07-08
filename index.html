@@ -708,7 +708,27 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
             });
         });
 
-        // 2. ORDER FORM – SEND TO WHATSAPP + BACKGROUND GOOGLE FORM
+        // 2. TRACK VIEW CONTENT (Fires once on load)
+        fbq('track', 'ViewContent', {
+            content_name: 'FREEZE Air Cooler',
+            content_category: 'Cooling Fan',
+            value: 249,
+            currency: 'MAD'
+        });
+
+        // 3. TRACK INITIATE CHECKOUT (Fires once on first form interaction)
+        let checkoutTracked = false;
+        document.querySelector('.form-section').addEventListener('click', function () {
+            if (checkoutTracked) return;
+            checkoutTracked = true;
+
+            fbq('track', 'InitiateCheckout', {
+                value: 249,
+                currency: 'MAD'
+            });
+        });
+
+        // 4. ORDER FORM – SEND TO WHATSAPP + PURCHASE TRACKING
         function sendToWhatsApp(event) {
             var name = document.getElementById('name').value;
             var phone = document.getElementById('phone').value;
@@ -726,10 +746,17 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
 
             var whatsappUrl = 'https://wa.me/212691354018?text=' + message;
 
-            // Open WhatsApp immediately
-            window.open(whatsappUrl, '_blank');
+            // Track Purchase
+            fbq('track', 'Purchase', {
+                value: 249,
+                currency: 'MAD'
+            });
 
-            // Form proceeds smoothly to the hidden iframe
+            // Open WhatsApp with a slight delay for better tracking reliability
+            setTimeout(function () {
+                window.open(whatsappUrl, '_blank');
+            }, 300);
+
             return true;
         }
     </script>
