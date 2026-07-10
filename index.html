@@ -604,10 +604,13 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
             <h2>📦 عبي المعلومات التالية لتأكيد الطلب:</h2>
             <p class="subtitle">Fill in your details and we'll confirm your order via WhatsApp.</p>
 
+            <!-- Hidden iframe target for the background Google Form submission -->
             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-            
-            <!-- FIXED: Submits natively to the correct target form response URL -->
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLSeAoRttIqHCK7MNIJrMJeDNO5gW1lpRwS0gUZiSa0w7wXKM9w/formResponse" method="POST" target="hiddenFrame" onsubmit="sendToWhatsApp(event)">
+
+            <!-- FIXED: target now matches the iframe's "name" attribute above,
+                 so the Google Form submits silently in the background instead
+                 of redirecting the whole page. -->
+            <form action="https://docs.google.com/forms/d/e/1FAIpQLSeAoRttIqHCK7MNIJrMJeDNO5gW1lpRwS0gUZiSa0w7wXKM9w/formResponse" method="POST" target="hidden_iframe" onsubmit="return sendToWhatsApp(event)">
 
                 <div class="form-group">
                     <label for="name">الاسم الكامل</label>
@@ -637,9 +640,6 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
                 <button type="submit" class="submit-btn">أرسل طلبي الآن</button>
                 <div class="form-note">سيتم تأكيد طلبك عبر واتساب خلال 24 ساعة</div>
             </form>
-
-            <!-- Hidden iframe for background Google Form submission -->
-             <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
         </div>
 
     </div>
@@ -731,41 +731,44 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
         });
 
         // 4. ORDER FORM – SEND TO WHATSAPP + PURCHASE TRACKING
-function sendToWhatsApp(event) {
-    // 1. Get the values
-    var name = document.getElementById('name').value;
-    var phone = document.getElementById('phone').value;
-    var city = document.getElementById('city').value;
-    var qtySelect = document.getElementById('quantity');
-    var quantityText = qtySelect.options[qtySelect.selectedIndex].text;
+        function sendToWhatsApp(event) {
+            // 1. Get the values
+            var name = document.getElementById('name').value;
+            var phone = document.getElementById('phone').value;
+            var city = document.getElementById('city').value;
+            var qtySelect = document.getElementById('quantity');
+            var quantityText = qtySelect.options[qtySelect.selectedIndex].text;
 
-    // 2. Build the message
-    var message = 'مرحباً FREEZE!%0A%0A';
-    message += 'أريد طلب المروحة:%0A';
-    message += 'الاسم: ' + name + '%0A';
-    message += 'رقم الهاتف: ' + phone + '%0A';
-    message += 'المدينة: ' + city + '%0A';
-    message += 'الكمية: ' + quantityText + '%0A%0A';
-    message += 'أؤكد طلبي. ✅';
+            // 2. Build the message
+            var message = 'مرحباً FREEZE!%0A%0A';
+            message += 'أريد طلب المروحة:%0A';
+            message += 'الاسم: ' + name + '%0A';
+            message += 'رقم الهاتف: ' + phone + '%0A';
+            message += 'المدينة: ' + city + '%0A';
+            message += 'الكمية: ' + quantityText + '%0A%0A';
+            message += 'أؤكد طلبي. ✅';
 
-    var whatsappUrl = 'https://wa.me/212691354018?text=' + message;
+            var whatsappUrl = 'https://wa.me/212691354018?text=' + message;
 
-    // 3. Track Purchase event
-    fbq('track', 'Purchase', {
-        value: 249,
-        currency: 'MAD'
-    });
+            // 3. Track Purchase event
+            fbq('track', 'Purchase', {
+                value: 249,
+                currency: 'MAD'
+            });
 
-    // 4. Trigger WhatsApp after a small delay
-   setTimeout(function() {
-        window.open(whatsappUrl, '_blank');
-    }, 500);
+            // 4. Open WhatsApp immediately (synchronously) — no setTimeout.
+            //    Delaying window.open() outside the direct click handler is
+            //    what browsers/popup-blockers flag and silently block,
+            //    especially on mobile.
+            window.open(whatsappUrl, '_blank');
 
-
-    // 5. IMPORTANT: Do not return true/false here. 
-    // The form action/target handles the Google Form submission automatically.
-    // By not preventing default, the form will submit to your iframe.
-}
+            // 5. IMPORTANT: Return true (do NOT call event.preventDefault()
+            //    and do NOT return false). This lets the form still submit
+            //    natively, in the background, to the hidden_iframe — which
+            //    is what sends the data to your Google Sheet without
+            //    redirecting the visible page.
+            return true;
+        }
     </script>
 
 </body>
