@@ -609,22 +609,22 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
 
                 <div class="form-group">
                     <label for="name">الاسم الكامل</label>
-                    <input type="text" id="name" name="entry.485275143" placeholder="أدخل اسمك الكامل" required />
+                    <input type="text" id="entry.485275143" name="name" placeholder="أدخل اسمك الكامل" required />
                 </div>
 
                 <div class="form-group">
                     <label for="phone">رقم الهاتف</label>
-                    <input type="tel" id="phone" name="entry.2078925050" placeholder="06XXXXXXXX" required />
+                    <input type="tel" id="entry.2078925050" name="phone" placeholder="06XXXXXXXX" required />
                 </div>
 
                 <div class="form-group">
                     <label for="city">المدينة</label>
-                    <input type="text" id="city" name="entry.524054928" placeholder="مثال: الدارالبيضاء، طنجة.." required />
+                    <input type="text" id="entry.524054928" name="city" placeholder="مثال: الدارالبيضاء، طنجة.." required />
                 </div>
 
                 <div class="form-group">
                     <label for="quantity">الكمية</label>
-                    <select id="quantity" name="entry.1561835429" required>
+                    <select id="entry.1561835429" name="quantity" required>
                         <option value="">اختر الكمية</option>
                         <option value="1">قطعة واحدة(1) 249درهم + هدية مجانية</option>
                         <option value="2">قطعتين (2) 399درهم + هدية مجانية</option>
@@ -756,7 +756,7 @@ function sendToWhatsApp(event) {
 
     // 4. Trigger WhatsApp after a small delay
     setTimeout(function () {
-        window.location.href = whatsappUrl, '_blank');
+        window.open(whatsappUrl, '_blank');
     }, 500);
 
     // 5. IMPORTANT: Do not return true/false here. 
