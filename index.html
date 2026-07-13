@@ -753,11 +753,10 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
         </button>
     </div>
 
-    <!-- ===== JAVASCRIPT ===== -->
+   <!-- ===== JAVASCRIPT ===== -->
     <script>
         /* ========================================================
-           CONFIG — replace this with your own Apps Script Web App
-           URL after you deploy the backend (see setup instructions).
+           CONFIG
            ======================================================== */
         const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyV3CzHsFSgvqeSMrK6U0lvlta3dCCdmOPD7OSgI0IVC1umXI7fW4DQawOqTHDKCvm6/exec";
         const WHATSAPP_NUMBER = "212691354018";
@@ -785,7 +784,7 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
             });
         });
 
-        // ---------- 2. VIEW CONTENT (fires once on load) ----------
+        // ---------- 2. VIEW CONTENT ----------
         fbq('track', 'ViewContent', {
             content_name: 'FREEZE Air Cooler',
             content_ids: ['freeze-fan'],
@@ -794,7 +793,7 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
             currency: 'MAD'
         });
 
-        // ---------- 3. ATTRIBUTION CAPTURE (for Meta Ads reporting) ----------
+        // ---------- 3. ATTRIBUTION CAPTURE ----------
         function getAttribution() {
             var params = new URLSearchParams(window.location.search);
             var attr = {
@@ -815,7 +814,7 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
                 Math.random().toString(36).substr(2, 4).toUpperCase();
         }
 
-        // ---------- 4. INITIATE CHECKOUT (fires once on first field focus) ----------
+        // ---------- 4. INITIATE CHECKOUT ----------
         let checkoutTracked = false;
         document.getElementById('orderForm').addEventListener('focusin', function () {
             if (checkoutTracked) return;
@@ -857,7 +856,7 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
             msg += 'المدينة: ' + encodeURIComponent(order.city) + '%0A';
             msg += 'الكمية: ' + encodeURIComponent(order.quantity_label) + '%0A%0A';
             msg += 'أؤكد طلبي. ✅';
-            return 'https://wa.me/'+212691354018'?text=' + msg;
+            return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + msg;
         }
 
         // ---------- 8. SUCCESS / ERROR HANDLERS ----------
@@ -875,11 +874,9 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
             msgEl.className = 'form-message success';
             msgEl.textContent = 'تم استلام طلبك بنجاح! جاري تحويلك إلى واتساب...';
 
-            // location.href (not window.open) so the redirect isn't blocked
-            // even though it happens after an async request finishes.
             setTimeout(function () {
                 window.location.href = buildWhatsAppUrl(order);
-            }, 500);
+            }, 600);
         }
 
         function handleOrderError(order, err) {
@@ -932,9 +929,6 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
             document.getElementById('formMessage').textContent = '';
             setLoading(true);
 
-            // mode: 'no-cors' + text/plain avoids CORS preflight issues with
-            // Apps Script on a static GitHub Pages host. The response is opaque
-            // (we can't read it), but the request itself completes reliably.
             fetch(APPS_SCRIPT_URL, {
                 method: 'POST',
                 mode: 'no-cors',
@@ -945,6 +939,5 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
             .catch(function (err) { handleOrderError(order, err); });
         });
     </script>
-
 </body>
 </html>
