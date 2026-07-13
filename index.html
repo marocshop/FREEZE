@@ -268,6 +268,21 @@
             background-position: left 16px center;
             background-size: 16px;
         }
+        .form-group input.invalid,
+        .form-group select.invalid {
+            border-color: #c0392b;
+            box-shadow: 0 0 0 4px rgba(192, 57, 43, 0.1);
+        }
+        .field-error {
+            display: none;
+            color: #c0392b;
+            font-size: 13px;
+            margin-top: 6px;
+            font-weight: 500;
+        }
+        .field-error.show {
+            display: block;
+        }
         .submit-btn {
             width: 100%;
             padding: 16px;
@@ -282,6 +297,7 @@
             box-shadow: 0 6px 0 #060f1f;
             margin-top: 6px;
             font-family: 'Alexandria', sans-serif;
+            position: relative;
         }
         .submit-btn:hover {
             background: #1a3355;
@@ -291,6 +307,56 @@
         .submit-btn:active {
             transform: translateY(4px);
             box-shadow: 0 2px 0 #060f1f;
+        }
+        .submit-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.85;
+            transform: none;
+        }
+        .submit-btn .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.35);
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            margin: 0 auto;
+            animation: spin 0.7s linear infinite;
+        }
+        .submit-btn.loading .btn-text {
+            display: none;
+        }
+        .submit-btn.loading .spinner {
+            display: inline-block;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .form-message {
+            display: none;
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-size: 15px;
+            text-align: center;
+            font-weight: 500;
+        }
+        .form-message.success {
+            display: block;
+            background: #e6f7ee;
+            color: #157a4a;
+            border: 1px solid #b5e6c9;
+        }
+        .form-message.error {
+            display: block;
+            background: #fdecea;
+            color: #c0392b;
+            border: 1px solid #f5c2c0;
+        }
+        .form-message a {
+            color: #c0392b;
+            font-weight: 700;
+            text-decoration: underline;
         }
         .form-note {
             text-align: center;
@@ -504,11 +570,11 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
 
     <div class="container">
 
-        <!-- ===== 3. CTA SECTION (UPDATED PRICES) ===== -->
+        <!-- ===== 3. CTA SECTION ===== -->
         <div class="cta-section">
             <div class="price-block">
-                <span class="old-price">399 MAD</span> <!-- OLD PRICE -->
-                <span class="new-price">249 MAD <small>free gift</small></span> <!-- NEW PRICE -->
+                <span class="old-price">399 MAD</span>
+                <span class="new-price">249 MAD <small>free gift</small></span>
             </div>
             <a href="#order-form" class="cta-button">اطلب الآن</a>
             <div class="cta-sub">Cash on delivery – Fast shipping</div>
@@ -530,11 +596,11 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
     <!-- ===== 5. COMPARISON IMAGE (full width) ===== -->
     <img src="assets/comparison_1_.webp" alt="FREEZE comparison table" class="full-width-img" />
 
-     <!-- ===== 7. BONUS TRUST LINE ===== -->
+     <!-- ===== BONUS TRUST LINE ===== -->
         <div class="bonus-trust">
          🎁 هدية مجانية: جوج قوالب ثلج كيزيدو قوة التبريد وانتعاش أكثر  
         </div>
-    
+
     <!-- ===== 6. TESTIMONIALS IMAGE (full width) ===== -->
     <img src="assets/testimonials_1_.webp" alt="FREEZE testimonials" class="full-width-img" />
 
@@ -599,44 +665,47 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
             </div>
         </div>
 
-        <!-- ===== 9. CUSTOM ORDER FORM (FIXED PIPELINE) ===== -->
+        <!-- ===== 9. ORDER FORM (Google Sheets via Apps Script + WhatsApp) ===== -->
         <div class="form-section" id="order-form">
             <h2>📦 عبي المعلومات التالية لتأكيد الطلب:</h2>
             <p class="subtitle">Fill in your details and we'll confirm your order via WhatsApp.</p>
 
-            <!-- Hidden iframe target for the background Google Form submission -->
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-
-            <!-- FIXED: target now matches the iframe's "name" attribute above,
-                 so the Google Form submits silently in the background instead
-                 of redirecting the whole page. -->
-            <form action="https://docs.google.com/forms/d/e/1FAIpQLSeAoRttIqHCK7MNIJrMJeDNO5gW1lpRwS0gUZiSa0w7wXKM9w/formResponse" method="POST" target="hidden_iframe" onsubmit="return sendToWhatsApp(event)">
+            <form id="orderForm" novalidate>
 
                 <div class="form-group">
                     <label for="name">الاسم الكامل</label>
-                    <input type="text" id="name" name="entry.485275143" placeholder="أدخل اسمك الكامل" required />
+                    <input type="text" id="name" name="name" placeholder="أدخل اسمك الكامل" required />
+                    <span class="field-error" id="nameError">الرجاء إدخال الاسم الكامل</span>
                 </div>
 
                 <div class="form-group">
                     <label for="phone">رقم الهاتف</label>
-                    <input type="tel" id="phone" name="entry.2078925050" placeholder="06XXXXXXXX" required />
+                    <input type="tel" id="phone" name="phone" placeholder="06XXXXXXXX" required />
+                    <span class="field-error" id="phoneError">رقم الهاتف غير صحيح (مثال: 0612345678)</span>
                 </div>
 
                 <div class="form-group">
                     <label for="city">المدينة</label>
-                    <input type="text" id="city" name="entry.524054928" placeholder="مثال: الدارالبيضاء، طنجة.." required />
+                    <input type="text" id="city" name="city" placeholder="مثال: الدارالبيضاء، طنجة.." required />
+                    <span class="field-error" id="cityError">الرجاء إدخال اسم المدينة</span>
                 </div>
 
                 <div class="form-group">
-                <label for="quantity">📦 عدد القطع اللي بغيتي:</label>
-                <select name="entry.1561835429" id="quantity" class="form-control">
-                   <option value="قطعة واحدة (1)">قطعة واحدة(1) 249درهم + هدية مجانية</option>
-                   <option value="قطعتين (2)">قطعتين (2) 399درهم + هدية مجانية</option>
-                   <option value="3 قطع">3 قطع 599درهم + 2هدية مجانية</option>
-                </select>
+                    <label for="quantity">📦 عدد القطع اللي بغيتي:</label>
+                    <select name="quantity" id="quantity">
+                       <option value="1">قطعة واحدة (1) – 249 درهم + هدية مجانية</option>
+                       <option value="2">قطعتين (2) – 399 درهم + هدية مجانية</option>
+                       <option value="3">3 قطع – 599 درهم + 2 هدية مجانية</option>
+                    </select>
                 </div>
 
-                <button type="submit" class="submit-btn">أرسل طلبي الآن</button>
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span class="btn-text">أرسل طلبي الآن</span>
+                    <span class="spinner"></span>
+                </button>
+
+                <div class="form-message" id="formMessage"></div>
+
                 <div class="form-note">سيتم تأكيد طلبك عبر واتساب خلال 24 ساعة</div>
             </form>
         </div>
@@ -684,11 +753,19 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
         </button>
     </div>
 
-    <!-- ===== JAVASCRIPT: FAQ Toggle + Form Submission ===== -->
+    <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // 1. FAQ ACCORDION
-        document.querySelectorAll('.faq-question').forEach(function(question) {
-            question.addEventListener('click', function() {
+        /* ========================================================
+           CONFIG — replace this with your own Apps Script Web App
+           URL after you deploy the backend (see setup instructions).
+           ======================================================== */
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyV3CzHsFSgvqeSMrK6U0lvlta3dCCdmOPD7OSgI0IVC1umXI7fW4DQawOqTHDKCvm6/exec";
+        const WHATSAPP_NUMBER = "212691354018";
+        const PRICE_MAP = { 1: 249, 2: 399, 3: 599 };
+
+        // ---------- 1. FAQ ACCORDION ----------
+        document.querySelectorAll('.faq-question').forEach(function (question) {
+            question.addEventListener('click', function () {
                 var answer = this.nextElementSibling;
                 var icon = this.querySelector('.icon-plus');
 
@@ -696,78 +773,177 @@ src="https://www.facebook.com/tr?id=1015324201353041&ev=PageView&noscript=1"
                     answer.classList.remove('open');
                     icon.classList.remove('rotated');
                 } else {
-                    document.querySelectorAll('.faq-answer').forEach(function(a) {
+                    document.querySelectorAll('.faq-answer').forEach(function (a) {
                         a.classList.remove('open');
                     });
-                    document.querySelectorAll('.icon-plus').forEach(function(i) {
+                    document.querySelectorAll('.icon-plus').forEach(function (i) {
                         i.classList.remove('rotated');
                     });
-
                     answer.classList.add('open');
                     icon.classList.add('rotated');
                 }
             });
         });
 
-        // 2. TRACK VIEW CONTENT (Fires once on load)
+        // ---------- 2. VIEW CONTENT (fires once on load) ----------
         fbq('track', 'ViewContent', {
             content_name: 'FREEZE Air Cooler',
-            content_category: 'Cooling Fan',
+            content_ids: ['freeze-fan'],
+            content_type: 'product',
             value: 249,
             currency: 'MAD'
         });
 
-        // 3. TRACK INITIATE CHECKOUT (Fires once on first form interaction)
+        // ---------- 3. ATTRIBUTION CAPTURE (for Meta Ads reporting) ----------
+        function getAttribution() {
+            var params = new URLSearchParams(window.location.search);
+            var attr = {
+                utm_source: params.get('utm_source') || sessionStorage.getItem('utm_source') || '',
+                utm_medium: params.get('utm_medium') || sessionStorage.getItem('utm_medium') || '',
+                utm_campaign: params.get('utm_campaign') || sessionStorage.getItem('utm_campaign') || '',
+                fbclid: params.get('fbclid') || sessionStorage.getItem('fbclid') || ''
+            };
+            Object.keys(attr).forEach(function (k) {
+                if (attr[k]) sessionStorage.setItem(k, attr[k]);
+            });
+            return attr;
+        }
+        const attribution = getAttribution();
+
+        function generateOrderId() {
+            return 'FRZ-' + Date.now().toString(36).toUpperCase() + '-' +
+                Math.random().toString(36).substr(2, 4).toUpperCase();
+        }
+
+        // ---------- 4. INITIATE CHECKOUT (fires once on first field focus) ----------
         let checkoutTracked = false;
-        document.querySelector('.form-section').addEventListener('click', function () {
+        document.getElementById('orderForm').addEventListener('focusin', function () {
             if (checkoutTracked) return;
             checkoutTracked = true;
-
+            var qty = parseInt(document.getElementById('quantity').value, 10) || 1;
             fbq('track', 'InitiateCheckout', {
-                value: 249,
-                currency: 'MAD'
+                value: PRICE_MAP[qty],
+                currency: 'MAD',
+                content_ids: ['freeze-fan'],
+                content_type: 'product',
+                num_items: qty
             });
         });
 
-        // 4. ORDER FORM – SEND TO WHATSAPP + PURCHASE TRACKING
-        function sendToWhatsApp(event) {
-            // 1. Get the values
-            var name = document.getElementById('name').value;
-            var phone = document.getElementById('phone').value;
-            var city = document.getElementById('city').value;
-            var qtySelect = document.getElementById('quantity');
-            var quantityText = qtySelect.options[qtySelect.selectedIndex].text;
-
-            // 2. Build the message
-            var message = 'مرحباً FREEZE!%0A%0A';
-            message += 'أريد طلب المروحة:%0A';
-            message += 'الاسم: ' + name + '%0A';
-            message += 'رقم الهاتف: ' + phone + '%0A';
-            message += 'المدينة: ' + city + '%0A';
-            message += 'الكمية: ' + quantityText + '%0A%0A';
-            message += 'أؤكد طلبي. ✅';
-
-            var whatsappUrl = 'https://wa.me/212691354018?text=' + message;
-
-            // 3. Track Purchase event
-            fbq('track', 'Purchase', {
-                value: 249,
-                currency: 'MAD'
-            });
-
-            // 4. Open WhatsApp immediately (synchronously) — no setTimeout.
-            //    Delaying window.open() outside the direct click handler is
-            //    what browsers/popup-blockers flag and silently block,
-            //    especially on mobile.
-            window.open(whatsappUrl, '_blank');
-
-            // 5. IMPORTANT: Return true (do NOT call event.preventDefault()
-            //    and do NOT return false). This lets the form still submit
-            //    natively, in the background, to the hidden_iframe — which
-            //    is what sends the data to your Google Sheet without
-            //    redirecting the visible page.
-            return true;
+        // ---------- 5. VALIDATION ----------
+        function validatePhone(phone) {
+            return /^0[5-7]\d{8}$/.test(phone.replace(/\s/g, ''));
         }
+        function setFieldError(input, errorId, hasError) {
+            var errorEl = document.getElementById(errorId);
+            input.classList.toggle('invalid', hasError);
+            errorEl.classList.toggle('show', hasError);
+        }
+
+        // ---------- 6. LOADING STATE ----------
+        function setLoading(isLoading) {
+            var btn = document.getElementById('submitBtn');
+            btn.classList.toggle('loading', isLoading);
+            btn.disabled = isLoading;
+        }
+
+        // ---------- 7. WHATSAPP MESSAGE BUILDER ----------
+        function buildWhatsAppUrl(order) {
+            var msg = 'مرحباً FREEZE!%0A%0A';
+            msg += 'أريد طلب المروحة:%0A';
+            msg += 'رقم الطلب: ' + order.order_id + '%0A';
+            msg += 'الاسم: ' + encodeURIComponent(order.name) + '%0A';
+            msg += 'رقم الهاتف: ' + encodeURIComponent(order.phone) + '%0A';
+            msg += 'المدينة: ' + encodeURIComponent(order.city) + '%0A';
+            msg += 'الكمية: ' + encodeURIComponent(order.quantity_label) + '%0A%0A';
+            msg += 'أؤكد طلبي. ✅';
+            return 'https://wa.me/'+212691354018'?text=' + msg;
+        }
+
+        // ---------- 8. SUCCESS / ERROR HANDLERS ----------
+        function handleOrderSuccess(order) {
+            fbq('track', 'Purchase', {
+                value: order.price,
+                currency: order.currency,
+                content_name: 'FREEZE Air Cooler',
+                content_ids: ['freeze-fan'],
+                content_type: 'product',
+                num_items: order.quantity
+            }, { eventID: order.order_id });
+
+            var msgEl = document.getElementById('formMessage');
+            msgEl.className = 'form-message success';
+            msgEl.textContent = 'تم استلام طلبك بنجاح! جاري تحويلك إلى واتساب...';
+
+            // location.href (not window.open) so the redirect isn't blocked
+            // even though it happens after an async request finishes.
+            setTimeout(function () {
+                window.location.href = buildWhatsAppUrl(order);
+            }, 500);
+        }
+
+        function handleOrderError(order, err) {
+            console.error('Order save failed:', err);
+            setLoading(false);
+            var msgEl = document.getElementById('formMessage');
+            msgEl.className = 'form-message error';
+            msgEl.innerHTML = 'حدث خطأ أثناء حفظ الطلب. يمكنك إتمام طلبك مباشرة عبر ' +
+                '<a href="' + buildWhatsAppUrl(order) + '">واتساب</a> أو المحاولة مرة أخرى.';
+        }
+
+        // ---------- 9. FORM SUBMIT ----------
+        document.getElementById('orderForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var nameEl = document.getElementById('name');
+            var phoneEl = document.getElementById('phone');
+            var cityEl = document.getElementById('city');
+            var qtyEl = document.getElementById('quantity');
+
+            var nameValid = !!nameEl.value.trim();
+            var phoneValid = validatePhone(phoneEl.value.trim());
+            var cityValid = !!cityEl.value.trim();
+
+            setFieldError(nameEl, 'nameError', !nameValid);
+            setFieldError(phoneEl, 'phoneError', !phoneValid);
+            setFieldError(cityEl, 'cityError', !cityValid);
+
+            if (!nameValid || !phoneValid || !cityValid) return;
+
+            var qty = parseInt(qtyEl.value, 10);
+            var order = {
+                order_id: generateOrderId(),
+                name: nameEl.value.trim(),
+                phone: phoneEl.value.trim(),
+                city: cityEl.value.trim(),
+                quantity: qty,
+                quantity_label: qtyEl.options[qtyEl.selectedIndex].text,
+                price: PRICE_MAP[qty],
+                currency: 'MAD',
+                page_url: window.location.href,
+                timestamp: new Date().toISOString(),
+                utm_source: attribution.utm_source,
+                utm_medium: attribution.utm_medium,
+                utm_campaign: attribution.utm_campaign,
+                fbclid: attribution.fbclid
+            };
+
+            document.getElementById('formMessage').className = 'form-message';
+            document.getElementById('formMessage').textContent = '';
+            setLoading(true);
+
+            // mode: 'no-cors' + text/plain avoids CORS preflight issues with
+            // Apps Script on a static GitHub Pages host. The response is opaque
+            // (we can't read it), but the request itself completes reliably.
+            fetch(APPS_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(order)
+            })
+            .then(function () { handleOrderSuccess(order); })
+            .catch(function (err) { handleOrderError(order, err); });
+        });
     </script>
 
 </body>
